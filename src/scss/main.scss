@@ -1,0 +1,58 @@
+// Deps
+//@import 'font-awesome/font-awesome'; 
+@import 'normalize';
+
+// Stylesheets
+@import 'variables';
+@import 'animations';
+@import 'headers'; 
+@import 'footer'; 
+@import 'music';
+@import 'utilities';
+
+body{
+//  background: linear-gradient(to bottom right, #494949, #222);
+  background: #1a1b1f;//$primary-dk;
+  background-attachment: fixed;
+  width:100%;
+  font-family: 'Montserrat', sans-serif;
+  font-weight:400;
+  color:#fff;
+}
+//https://www.mobomo.com/2014/05/better-font-smoothing-in-chrome-on-mac-os-x/
+html {     -webkit-font-smoothing: antialiased; } 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25), only screen and ( min-device-pixel-ratio: 1.25), only screen and ( min-resolution: 200dpi), only screen and ( min-resolution: 1.25dppx) {     -webkit-font-smoothing: subpixel-antialiased; } 
+
+@-moz-document url-prefix() {
+  body {
+    overflow-x:hidden;
+  }
+}
+
+.body-bg{
+  background:#1a1b1f;//$primary-dk;
+  z-index: 2;
+  position: relative;
+}
+
+* {}
+
+#particles{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:200%;  
+  z-index: 1;
+}
+
+.main-entry{
+  min-height: 100vh;
+
+}
+
+
+//safari SVG centering issue
+.safari .main-entry--open-top .logo .svg-wrapper{
+  display:none;
+}
