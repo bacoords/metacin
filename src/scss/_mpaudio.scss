@@ -1,0 +1,9 @@
+.mpaudio{
+  &__player{
+    visibility: hidden;
+    display:none;
+  }
+  .fa-pause-circle{
+    color:$primary-blk;
+  }
+}

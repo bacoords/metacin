@@ -7,12 +7,23 @@
 @import 'animations';
 @import 'headers'; 
 @import 'footer'; 
-@import 'music';
+
+@import 'mpscroll';
+@import 'mpintro';
+@import 'mpbox';
+@import 'mpcard';
+@import 'mpgal';
+@import 'mpfadein';
+@import 'mpmodal';
+@import 'mpalbum';
+@import 'mpaudio';
+
+
 @import 'utilities';
 
 body{
 //  background: linear-gradient(to bottom right, #494949, #222);
-  background: #1a1b1f;//$primary-dk;
+  background: $body-bg;
   background-attachment: fixed;
   width:100%;
   font-family: 'Montserrat', sans-serif;
@@ -30,7 +41,7 @@ html {     -webkit-font-smoothing: antialiased; }
 }
 
 .body-bg{
-  background:#1a1b1f;//$primary-dk;
+  background:linear-gradient(to bottom, transparent 0%, $body-bg 5%);
   z-index: 2;
   position: relative;
 }
@@ -50,6 +61,7 @@ html {     -webkit-font-smoothing: antialiased; }
   min-height: 100vh;
 
 }
+
 
 
 //safari SVG centering issue

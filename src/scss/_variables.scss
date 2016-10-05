@@ -1,7 +1,14 @@
 $svg-base: #eee;
-$bottom: #222222;
-$left: #73156c;
+$left: #FF5722;
+$bottom: #73156c;
 $right: #2582a8;
+$top: #fff;
+
+$music-color: $left;
+$laboratory-color: $right;
+$gallery-color: $bottom;
+
+$body-bg:#121316;
 
 
 $primary: #777c8d;
@@ -13,6 +20,8 @@ $white: #f9f9fa;
 $half: 350px;
 $half--neg: -350px;
 
+$font-headings: 'Montserrat', sans-serif;
+$font-body: 'Open Sans', sans-serif;
 
-$bp-md: 600px;
+$bp-md: 700px;
 $bp-lg: 1100px;

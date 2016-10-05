@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var	gutil = require('gulp-util');
 var	sass = require('gulp-sass');
-//var	imagemin = require('gulp-imagemin');
+var	imagemin = require('gulp-imagemin');
 var	autoprefixer = require('gulp-autoprefixer');
 var minifycss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
@@ -20,15 +20,17 @@ gulp.task('css', function(){
 
 gulp.task('js', function() {
   return gulp.src('src/js/*.js')
-    .pipe(uglify())
+    .pipe(uglify().on('error', function(e){
+      console.log(e);
+    }))
     .pipe(gulp.dest('dist/js'));
 });
 
-//gulp.task('images', function(){
-//	return gulp.src('src/img/*')
-//		.pipe(imagemin())
-//		.pipe(gulp.dest('dist/img'));
-//});
+gulp.task('images', function(){
+	return gulp.src('src/img/*')
+		.pipe(imagemin())
+		.pipe(gulp.dest('dist/img'));
+});
 
 gulp.task('watch', function(){
 	gulp.watch('src/scss/**/*.scss', ['css']);

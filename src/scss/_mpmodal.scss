@@ -1,0 +1,41 @@
+
+
+//Soundstage modal
+.mpmodal{
+  display: none;
+  transition: all 300ms ease;
+  &__overlay{
+    opacity:0;
+    transition:opacity 1s ease;
+  }
+}
+.mpmodal.mpmodal--active{
+  position:fixed;
+  display: inherit;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:30;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  .mpmodal__overlay{
+    position:fixed;
+    width:100%;
+    height:100%;
+    opacity:1;
+    background:linear-gradient(to bottom, rgba($white,0.9) 0%, rgba($white,1) 15%, rgba($white,1) 85%, rgba($white, 0.9) 100%);  
+    a{
+      position:absolute;
+      width:100%;
+      height:100%;
+      cursor: default;
+    }
+  }
+  .mpmodal__box{
+    position:relative;
+    margin:0;
+    top:5%;
+//    padding:0.5rem;
+  }
+}

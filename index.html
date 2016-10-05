@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css">
-    
-    <link rel="stylesheet" href="dist/css/main.css">
-    <link rel="stylesheet" href="dist/css/aos.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<!--    <link rel="stylesheet" href="/dist/css/aos.css">-->
+    <link rel="stylesheet" href="/dist/css/main.css?v=0.0.1.3">
 
   </head>
   <body>
@@ -22,39 +22,48 @@
       <div id="particles"></div>
 
       <header class="header">
-        <a v-link="{path : '/'}" class="header__title">
+        <router-link to="/" class="header__title">
           METACIN
-        </a>
-        <a v-link="{path : '/music'}" class="header__menu-item">
-          MUSIC HALL
-        </a>
-        <a v-link="{path : '/gallery'}" class="header__menu-item">
-          EYE GALLERY
-        </a>
-        <a v-link="{path : '/laboratory'}" class="header__menu-item">
-          LABORATORY
-        </a>
+        </router-link>
+         <a class="header__menu-item">
+           &#9776;
+         </a>
+         
+         <nav class="header-nav">
+           <ul class="header-nav__ul">
+             <li href="header-nav__li"><router-link class="header-nav__a" to="/">Home</router-link></li>
+             <li href="header-nav__li"><router-link class="header-nav__a" to="/music">Music Hall</router-link></li>
+             <li href="header-nav__li"><router-link class="header-nav__a" to="/gallery">Eye Gallery</router-link></li>
+             <li href="header-nav__li"><router-link class="header-nav__a" to="/laboratory">Laboratory</router-link></li>
+           </ul>
+         </nav>
+         
+         
       </header>
-      <div class="logo">
-        <a v-link="{path : '/music'}" class="feat feat-music">
+      <div class="logo circle-top-run">
+        <router-link to="/music" class="feat feat-music">
           <span class="feat__inner"><h2>MUSIC HALL</h2></span>
-        </a>
-        <a v-link="{path : '/gallery'}"  class="feat feat-gallery">
+        </router-link>
+        <router-link to="/gallery"  class="feat feat-gallery">
           <span class="feat__inner"><h2>EYE GALLERY</h2></span>
-        </a>
-        <a v-link="{path : '/laboratory'}" class="feat feat-laboratory">
+        </router-link>
+        <router-link to="/laboratory" class="feat feat-laboratory">
           <span class="feat__inner"><h2>LABORATORY</h2></span>
+        </router-link>
+        <a href="#" class="feat feat-featured">
+          <span class="feat__inner"><h2>METACIN</h2></span>
         </a>
         <div class="svg-wrapper">
     
-          <svg width="730px" height="730px" viewBox="112 112 799 799" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <svg width="600px" height="600px" viewBox="112 112 799 799" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <desc>Created with Sketch.</desc>
               <defs></defs>
               <g id="test" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(150.000000, 153.000000)">
                   <circle id="main-circle" stroke="#FFFFFF" stroke-width="15" cx="365" cy="365" r="350"></circle>
-                  <circle id="circle-left-bg" fill="#D8D8D8" cx="91.658278" cy="391.658278" r="90"></circle>
-                  <circle id="circle-right-bg" fill="#D8D8D8" cx="691" cy="391.658278" r="90"></circle>
-                  <circle id="circle-bottom-bg" fill="#D8D8D8" cx="391.658278" cy="691.658278" r="90"></circle>
+                  <circle id="circle-left-bg" fill="#D8D8D8" cx="60" cy="360" r="90"></circle>
+                  <circle id="circle-right-bg" fill="#D8D8D8" cx="660" cy="350" r="90"></circle>
+                  <circle id="circle-bottom-bg" fill="#D8D8D8" cx="360" cy="660" r="90"></circle>
+                  <circle id="circle-top-bg" fill="#D8D8D8" cx="360" cy="60" r="90"></circle>
                   <g id="circle-right-outer" transform="translate(365.000000, 365.000000)" fill="#FFFFFF">
                       <g id="circle-right">
                           <circle id="circle-right-inner" cx="0" cy="0" r="36" transform="translate(355, 0)"></circle>
@@ -70,15 +79,18 @@
                           <circle id="circle-bottom-inner" cx="0" cy="0" r="36" transform="translate(0, 355)"></circle>
                       </g>
                   </g>
+                  <g id="circle-top-outer" transform="translate(365.000000, 365.000000)" fill="#FFFFFF">
+                      <g id="circle-top">
+                          <circle id="circle-top-inner" cx="0" cy="0" r="36" transform="translate(0, -355)"></circle>
+                      </g>
+                  </g>
               </g>
           </svg>   
         </div>
       </div>
-
+      
       <div class="router-contents">
-
         <router-view></router-view>
-
       </div>
       
       
@@ -94,6 +106,10 @@
   
    
    <template id="featuredTemplate">
+     <div>
+     <div class="featured--spacer"></div>
+     
+     
       <!--     Intro Box-->
       <div class="mpintro">
         <div class="mpintro__text">
@@ -101,35 +117,46 @@
           <p class="u-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
         </div>
       </div>
+      
+      
+      
       <div class="body-bg">
         <!--     Featured Tune Box-->
         <div class="mpbox">
           <div class="mpbox__text">
             <h4>Odyssey <small>Featured Tune</small></h4>
-            <a  v-link="{path : '/music'}" >Visit Music Hall <i class="fa fa-arrow-right" aria-hidden="true"></i>
-  </a>
+            <router-link to="/music" >Visit Music Hall <i class="fa fa-arrow-right" aria-hidden="true"></i>
+  </router-link>
           </div>
-          <div class="mpbox__mpcard">
+          <div class="mpbox__mpcard mpfadein">
             <div class="mpcard mpcard--music" ontouchstart="this.classList.toggle('hover');">
               <div class="mpcard__inner">
                 <div class="mpcard__front">
 
                 </div>
                 <div class="mpcard__back">
-                  <i class="fa fa-play-circle" aria-hidden="true"></i>
+                  <i class="fa fa-play-circle" aria-hidden="true" @click="playAudio"></i>
+                  <audio src="/dist/mp3/sample.mp3" controls="controls" class="mpaudio__player">
                 </div>
               </div>
             </div>
           </div>
         </div>
+        
+        <!--     Intro Box-->
+        <div class="mpintro">
+          <div class="mpintro__text">
+            <p class="u-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
+          </div>
+        </div>
+        
         <!--     Featured Art Box-->
         <div class="mpbox mpbox--reverse">
           <div class="mpbox__text">
             <h4>Anthem <small>Featured Art</small></h4>
-            <a v-link="{path : '/gallery'}" >Visit Eye Gallery <i class="fa fa-arrow-right" aria-hidden="true"></i>
-  </a>
+            <router-link to="/gallery" >Visit Eye Gallery <i class="fa fa-arrow-right" aria-hidden="true"></i> </router-link>
           </div>
-          <div class="mpbox__mpcard">
+          <div class="mpbox__mpcard mpfadein">
             <div class="mpcard mpcard--gallery" ontouchstart="this.classList.toggle('hover');">
               <div class="mpcard__inner">
                 <div class="mpcard__front">
@@ -142,96 +169,154 @@
             </div>
           </div>
         </div>
+
+        <!--     Intro Box-->
+        <div class="mpintro">
+          <div class="mpintro__text">
+            <p class="u-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
+          </div>
+        </div>
       </div>
+    </div>
    </template>
+   
+   
+   
    
    
     <!--    Music Hall-->
     <template id="musicTemplate">
-     
-      <!--     Musicology Intro-->
-      <div class="mpintro">
-        <div class="mpintro__text">
-          <h2 class="rellax" data-rellax-speed="-1">Musicology</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
-          <p>Praesent ut facilisis nulla, non maximus urna. Nunc feugiat urna et vestibulum pulvinar. Ut blandit rutrum urna, eget varius nibh dignissim ut. Aenean dictum sem ligula, at sollicitudin quam laoreet quis. Suspendisse in nibh neque. Integer quis diam hendrerit, vehicula ante eu, maximus nisi. In et mi mauris.</p>
-          <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer maximus dui non ante vestibulum, vel tincidunt lorem sagittis. Etiam non justo id est consequat accumsan sed vitae leo. Quisque ac molestie ligula, a ultrices metus. Aliquam aliquam auctor tincidunt. Nunc fringilla tellus ut libero cursus venenatis. Mauris sit amet est ipsum. Ut id tempor elit. Morbi consectetur sed nisi at volutpat.</p>
+      <div>
+        <div class="mploading" v-show="!loaded"><div class="mploading__inner">Loading</div></div>
+        <div v-show="loaded">
+
+        <!--  Scroll Down Indicator       -->
+        <div class="mpscroll">
+          <a class="mpscroll__inner">
+             &#10151;
+          </a>
         </div>
-      </div>
-     
-     
-      <!--     Featured Tune Box-->
-      <div class="mpbox">
-        <div class="mpbox__text">
-          <h4>Odyssey <small>Featured Tune</small></h4>
+
+
+
+        <!--     Musicology Intro-->
+        <div class="mpintro">
+          <div class="mpintro__text">
+            <h2 class="rellax" data-rellax-speed="-1">Musicology</h2>
+            <br><br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
+            <p>Praesent ut facilisis nulla, non maximus urna. Nunc feugiat urna et vestibulum pulvinar. Ut blandit rutrum urna, eget varius nibh dignissim ut. Aenean dictum sem ligula, at sollicitudin quam laoreet quis. Suspendisse in nibh neque. Integer quis diam hendrerit, vehicula ante eu, maximus nisi. In et mi mauris.</p>
+            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer maximus dui non ante vestibulum, vel tincidunt lorem sagittis. Etiam non justo id est consequat accumsan sed vitae leo. Quisque ac molestie ligula, a ultrices metus. Aliquam aliquam auctor tincidunt. Nunc fringilla tellus ut libero cursus venenatis. Mauris sit amet est ipsum. Ut id tempor elit. Morbi consectetur sed nisi at volutpat.</p>
+          </div>
         </div>
-        <div class="mpbox__mpcard">
-          <div class="mpcard mpcard--music rellax" data-rellax-speed="0" ontouchstart="this.classList.toggle('hover');">
-            <div class="mpcard__inner">
-              <div class="mpcard__front">
-              
-              </div>
-              <div class="mpcard__back">
-                <i class="fa fa-play-circle" aria-hidden="true"></i>
+
+
+        <!--     Featured Tune Box-->
+        <div class="mpbox">
+          <div class="mpbox__text">
+            <h4>Odyssey <small>Featured Tune</small></h4>
+          </div>
+          <div class="mpbox__mpcard mpfadein">
+            <div class="mpcard mpcard--music" ontouchstart="this.classList.toggle('hover');">
+              <div class="mpcard__inner">
+                <div class="mpcard__front">
+
+                </div>
+                <div class="mpcard__back">
+                  <i class="fa fa-play-circle" aria-hidden="true" @click="playAudio"></i>
+                  <audio src="/dist/mp3/sample.mp3" controls="controls" class="mpaudio__player">
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+
+
+        <!--      Sound Stage Catalog-->
+        <div class="mpgal">
+          <div class="mpgal__header">
+            <h2>Soundstage</h2>
+          </div>
+          <div v-for="post in posts" class="mpgal__item mpfadein">
+<!--
+            <a v-on:click="openAlbum(post.slug)">
+              <img :src="post.image" alt="{{post.title}}">
+            </a>
+-->
+            <router-link :to="'/music/' + post.slug">
+              <img :src="post.image" :alt="post.title">
+            </router-link>
+          </div>
+        </div>
+
+
+        <!--      Sound Stage Modal Router Frame-->
+        <div class="mpmodal">
+          <router-view></router-view>
+        </div>
+
+
+
+
+        <!--      On the Record Narrative-->
+        <div class="mpintro">
+          <div class="mpintro__text">
+            <h2>On The Record</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi soluta deserunt eaque, quod quidem totam laudantium, quos repellendus architecto et dolorem eum? Blanditiis sunt officiis vitae, necessitatibus nemo ipsam, amet.</p>
+          </div>
+        </div>
+
       </div>
-      
-      
-      
-      <!--      Sound Stage Catalog-->
-      <div class="mpgal">
-        <div class="mpgal__header">
-          <h2>Soundstage</h2>
-        </div>
-        <div class="mpgal__item">
-          <img src="/dist/img/album-1.png" alt="Sound Stage Gallery" data-aos="zoom-in-up" data-aos-offset="0" data-aos-anchor-placement="top-center" data-aos-delay="0">
-        </div>
-        <div class="mpgal__item">
-          <img src="/dist/img/album-2.png" alt="Sound Stage Gallery" data-aos="zoom-in-up" data-aos-offset="0" data-aos-anchor-placement="top-center" data-aos-delay="100">
-        </div>
-        <div class="mpgal__item">
-          <img src="/dist/img/album-3.png" alt="Sound Stage Gallery" data-aos="zoom-in-up" data-aos-offset="0" data-aos-anchor-placement="top-center" data-aos-delay="200">
-        </div>
-        <div class="mpgal__item">
-          <img src="/dist/img/album-4.png" alt="Sound Stage Gallery" data-aos="zoom-in-up" data-aos-offset="0" data-aos-anchor-placement="top-center" data-aos-delay="300">
-        </div>
-        <div class="mpgal__item">
-          <img src="/dist/img/album-5.png" alt="Sound Stage Gallery" data-aos="zoom-in-up" data-aos-offset="0" data-aos-anchor-placement="top-center" data-aos-delay="0">
-        </div>
-        <div class="mpgal__item">
-          <img src="/dist/img/album-6.png" alt="Sound Stage Gallery" data-aos="zoom-in-up" data-aos-offset="0" data-aos-anchor-placement="top-center" data-aos-delay="100">
-        </div>
-        <div class="mpgal__item">
-          <img src="/dist/img/album-7.png" alt="Sound Stage Gallery" data-aos="zoom-in-up" data-aos-offset="0" data-aos-anchor-placement="top-center" data-aos-delay="200">
-        </div>
-        <div class="mpgal__item">
-          <img src="/dist/img/album-8.png" alt="Sound Stage Gallery" data-aos="zoom-in-up" data-aos-offset="0" data-aos-anchor-placement="top-center" data-aos-delay="300">
-        </div>
-      </div>
-      
-      
-      
-      <!--      On the Record Narrative-->
-      <div class="mpintro">
-        <div class="mpintro__text">
-          <h2>On The Record</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi soluta deserunt eaque, quod quidem totam laudantium, quos repellendus architecto et dolorem eum? Blanditiis sunt officiis vitae, necessitatibus nemo ipsam, amet.</p>
-        </div>
-      </div>
+     </div>
     </template>
     
+    
+    
+    <!--  Album Modal  -->
+    <template id="albumTemplate">
+      <div>
+        <div class="mpmodal__overlay">
+          <a class="mpmodal__exit"></a>
+        </div>
+        <div class="mpmodal__box">
+          <div class="mpalbum">
+            <div class="mpalbum__close">
+              <a class="mpmodal__exit">&#x2715;</a>
+            </div>
+            <div class="mpalbum__description">
+              <div class="mpalbum__title">
+                <h3>{{post.title}}</h3>
+              </div>
+              <div class="mpalbum__content">
+                <div v-html="post.content"></div>
+                <p><small>Michael Yeaman &amp; Chris Rhodes<BR>© 2016 Metacin, Inc. / NovaMedia</small></p>
+              </div>
+              <div class="mpalbum__download" data-aos="fade-right" data-aos-offset="0" data-aos-anchor-placement="top-center" data-aos-delay="200">
+                <a href="#"><img src="/dist/img/icon-itunes.png" alt="Available on iTunes"></a>
+                <a href="#"><img src="/dist/img/icon-spotify.png" alt="Listen on Spotify"></a>
+                <a href="#"><img src="/dist/img/icon-amazon.png" alt="Available on Amazon Music"></a>
+              </div>
+            </div>
+            <div class="mpalbum__image">
+              <img :src="post.image" :alt="post.title" data-aos="fade-left" data-aos-offset="0" data-aos-anchor-placement="top-center" data-aos-delay="0">
+            </div>
+          </div>
 
-    <script src="dist/js/jquery-3.1.0.js"></script>
-    <script src="dist/js/particles.js"></script>
-    <script src="dist/js/aos.js"></script>
-    <script src="dist/js/rellax.js"></script>
+        </div>
+      </div> 
+    </template>
 
-    <script src="dist/js/vue.js"></script>
-    <script src="dist/js/vue-router.js"></script>
-    <script src="dist/js/app.js"></script>
-    <script src="dist/js/vue-app.js"></script>
+    <script src="/vendor/jquery-3.1.0.js"></script>
+    <script src="/vendor/particles.js"></script>
+<!--    <script src="/vendor/aos.js"></script>-->
+    <script src="/vendor/rellax.js"></script>
+<!--    <script src="/vendor/vue.js"></script>-->
+    <script src="/vendor/vue.2.js"></script>
+<!--    <script src="/vendor/vue-router.js"></script>-->
+    <script src="/vendor/vue-router.2.js"></script>
+    
+    <script src="/dist/js/app.js?v=0.0.1.3"></script>
+    <script src="/dist/js/vue-app.js?v=0.0.1.3"></script>
   </body>
 </html>

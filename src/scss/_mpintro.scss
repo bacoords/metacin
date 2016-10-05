@@ -1,0 +1,37 @@
+
+//Musicology
+.mpintro{
+  &__text{
+//    max-width: 600px;
+    max-width:100%;
+    margin: 4rem auto;
+    padding:0.5rem;
+    h2, p{
+      color:$white;
+//      text-align: center;
+    }
+    h2 {
+      opacity: 0.1;
+      font-size:3rem;
+      margin-bottom: 4rem;
+      text-align: center;
+      @media(min-width:$bp-md){
+        font-size:6rem;
+      }
+      @media(min-width:$bp-lg){
+        font-size:8rem;
+      }
+    }
+    p{
+      text-indent: 0.5rem;
+      max-width:600px;
+      display: block;
+      margin:0 auto;
+      line-height: 1.4;
+      font-size:1.2rem;
+      margin-bottom: 2rem;
+      font-family:$font-body;
+    }
+  }
+}
+
