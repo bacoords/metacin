@@ -135,8 +135,10 @@
 
                 </div>
                 <div class="mpcard__back">
-                  <i class="fa fa-play-circle" aria-hidden="true" @click="playAudio"></i>
-                  <audio src="/dist/mp3/sample.mp3" controls="controls" class="mpaudio__player">
+                  <div class="mpcard__back__inner">
+                    <i class="fa fa-play-circle" aria-hidden="true" @click="playAudio"></i>
+                    <audio src="/dist/mp3/odyssey.mp3" controls="controls" class="mpaudio__player">
+                  </div>
                 </div>
               </div>
             </div>
@@ -163,7 +165,9 @@
 
                 </div>
                 <div class="mpcard__back">
-                  <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                  <div class="mpcard__back__inner">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                  </div>
                 </div>
               </div>
             </div>
@@ -223,8 +227,10 @@
 
                 </div>
                 <div class="mpcard__back">
-                  <i class="fa fa-play-circle" aria-hidden="true" @click="playAudio"></i>
-                  <audio src="/dist/mp3/sample.mp3" controls="controls" class="mpaudio__player">
+                  <div class="mpcard__back__inner">
+                    <i class="fa fa-play-circle" aria-hidden="true" @click="playAudio"></i>
+                    <audio src="/dist/mp3/odyssey.mp3" controls="controls" class="mpaudio__player">
+                  </div>
                 </div>
               </div>
             </div>
@@ -239,11 +245,6 @@
             <h2>Soundstage</h2>
           </div>
           <div v-for="post in posts" class="mpgal__item mpfadein">
-<!--
-            <a v-on:click="openAlbum(post.slug)">
-              <img :src="post.image" alt="{{post.title}}">
-            </a>
--->
             <router-link :to="'/music/' + post.slug">
               <img :src="post.image" :alt="post.title">
             </router-link>
