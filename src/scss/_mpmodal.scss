@@ -19,6 +19,7 @@
   z-index:30;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  overflow-x:hidden;
   .mpmodal__overlay{
     position:fixed;
     width:100%;

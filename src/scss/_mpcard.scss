@@ -91,17 +91,17 @@ $mpcard-lg:400px;
   }
   &--gallery{
     .mpcard__front{
-      background: url(../img/gallery-1.png) no-repeat center;
+      background: url(../img/gallery-8.png) no-repeat center;
       background-size: cover;
     }
     .mpcard__back{
-      background: url(../img/gallery-1.png) no-repeat center;
+      background: url(../img/gallery-8.png) no-repeat center;
       background-size: cover;
     }
   }
 }
 
-.mpcard:hover .mpcard__inner, .mocard.hover .mpcard__inner{
+.mpcard:hover .mpcard__inner, .mpcard.hover .mpcard__inner{
   transform: rotateY(180deg);
 }
 

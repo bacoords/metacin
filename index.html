@@ -9,8 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-<!--    <link rel="stylesheet" href="/dist/css/aos.css">-->
-    <link rel="stylesheet" href="/dist/css/main.css?v=0.0.1.3">
+    <link rel="stylesheet" href="/dist/css/main.css?v=0.0.1.5">
 
   </head>
   <body>
@@ -21,7 +20,7 @@
     <div class="main-entry" id="app">
       <div id="particles"></div>
 
-      <header class="header">
+      <header class="header" v-bind:class="$route.name === 'music' || $route.name === 'gallery' || $route.name === 'laboratory' || $route.name === 'events' ? 'header--active' : ''">
         <router-link to="/" class="header__title">
           METACIN
         </router-link>
@@ -35,61 +34,55 @@
              <li href="header-nav__li"><router-link class="header-nav__a" to="/music">Music Hall</router-link></li>
              <li href="header-nav__li"><router-link class="header-nav__a" to="/gallery">Eye Gallery</router-link></li>
              <li href="header-nav__li"><router-link class="header-nav__a" to="/laboratory">Laboratory</router-link></li>
+             <li href="header-nav__li"><router-link class="header-nav__a" to="/events">Events</router-link></li>
            </ul>
          </nav>
          
          
       </header>
-      <div class="logo circle-top-run">
-        <router-link to="/music" class="feat feat-music">
-          <span class="feat__inner"><h2>MUSIC HALL</h2></span>
-        </router-link>
-        <router-link to="/gallery"  class="feat feat-gallery">
-          <span class="feat__inner"><h2>EYE GALLERY</h2></span>
-        </router-link>
-        <router-link to="/laboratory" class="feat feat-laboratory">
-          <span class="feat__inner"><h2>LABORATORY</h2></span>
-        </router-link>
-        <a href="#" class="feat feat-featured">
-          <span class="feat__inner"><h2>METACIN</h2></span>
-        </a>
-        <div class="svg-wrapper">
-    
-          <svg width="600px" height="600px" viewBox="112 112 799 799" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <desc>Created with Sketch.</desc>
-              <defs></defs>
-              <g id="test" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(150.000000, 153.000000)">
-                  <circle id="main-circle" stroke="#FFFFFF" stroke-width="15" cx="365" cy="365" r="350"></circle>
-                  <circle id="circle-left-bg" fill="#D8D8D8" cx="60" cy="360" r="90"></circle>
-                  <circle id="circle-right-bg" fill="#D8D8D8" cx="660" cy="350" r="90"></circle>
-                  <circle id="circle-bottom-bg" fill="#D8D8D8" cx="360" cy="660" r="90"></circle>
-                  <circle id="circle-top-bg" fill="#D8D8D8" cx="360" cy="60" r="90"></circle>
-                  <g id="circle-right-outer" transform="translate(365.000000, 365.000000)" fill="#FFFFFF">
-                      <g id="circle-right">
-                          <circle id="circle-right-inner" cx="0" cy="0" r="36" transform="translate(355, 0)"></circle>
-                      </g>
-                  </g>
-                  <g id="circle-left-outer" transform="translate(365.000000, 365.000000)" fill="#FFFFFF">
-                      <g id="circle-left">
-                          <circle id="circle-left-inner" cx="0" cy="0" r="36"  transform="translate(-355, 0)"></circle>
-                      </g>
-                  </g>
-                  <g id="circle-bottom-outer" transform="translate(365.000000, 365.000000)" fill="#FFFFFF">
-                      <g id="circle-bottom">
-                          <circle id="circle-bottom-inner" cx="0" cy="0" r="36" transform="translate(0, 355)"></circle>
-                      </g>
-                  </g>
-                  <g id="circle-top-outer" transform="translate(365.000000, 365.000000)" fill="#FFFFFF">
-                      <g id="circle-top">
-                          <circle id="circle-top-inner" cx="0" cy="0" r="36" transform="translate(0, -355)"></circle>
-                      </g>
-                  </g>
-              </g>
-          </svg>   
+      
+      
+      
+      
+      <div class="compass" v-bind:class="$route.name === 'music' || $route.name === 'gallery' || $route.name === 'laboratory' || $route.name === 'events' ? 'compass--active' : ''">
+        <div class="compass__header">
+          <div class="compass__title">
+            METACIN
+          </div>
+          <div class="compass__subtitle">
+            Beyond Medicine &reg;
+          </div>
         </div>
+        <div class="compass__graphic">
+          <a href="#featuredAnchor" class="feat feat-featured">
+            <span class="feat__inner"><h2>WELCOME</h2></span>
+          </a>
+          <router-link to="/music" class="feat feat-music">
+            <span class="feat__inner"><h2>MUSIC HALL</h2></span>
+          </router-link>
+          <router-link to="/gallery"  class="feat feat-gallery">
+            <span class="feat__inner"><h2>EYE GALLERY</h2></span>
+          </router-link>
+          <router-link to="/events" class="feat feat-events">
+            <span class="feat__inner"><h2>EVENTS</h2></span>
+          </router-link>
+          <router-link to="/laboratory" class="feat feat-laboratory">
+            <span class="feat__inner"><h2>LABORATORY</h2></span>
+          </router-link>          
+        </div>
+
+
       </div>
       
+    
+      
       <div class="router-contents">
+        <div class="featured--spacer"></div>
+       <div class="mpscroll">
+          <a class="mpscroll__inner">
+             &#10151;
+          </a>
+        </div>  
         <router-view></router-view>
       </div>
       
@@ -106,14 +99,15 @@
   
    
    <template id="featuredTemplate">
-     <div>
-     <div class="featured--spacer"></div>
+     <div id="featuredAnchor">
+     
      
      
       <!--     Intro Box-->
       <div class="mpintro">
         <div class="mpintro__text">
-          <h2 class="rellax" data-rellax-speed="-1">METACIN</h2>
+<!--          <h2 class="rellax" data-rellax-speed="-1">METACIN</h2>-->
+         <br><br>
           <p class="u-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
         </div>
       </div>
@@ -166,7 +160,7 @@
                 </div>
                 <div class="mpcard__back">
                   <div class="mpcard__back__inner">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    <router-link to="/gallery/canon-in-d"><i class="fa fa-plus-circle" aria-hidden="true"></i></router-link>
                   </div>
                 </div>
               </div>
@@ -190,16 +184,12 @@
    
     <!--    Music Hall-->
     <template id="musicTemplate">
-      <div>
+      <div id="musicAnchor">
         <div class="mploading" v-show="!loaded"><div class="mploading__inner">Loading</div></div>
         <div v-show="loaded">
 
         <!--  Scroll Down Indicator       -->
-        <div class="mpscroll">
-          <a class="mpscroll__inner">
-             &#10151;
-          </a>
-        </div>
+
 
 
 
@@ -293,14 +283,134 @@
                 <div v-html="post.content"></div>
                 <p><small>Michael Yeaman &amp; Chris Rhodes<BR>© 2016 Metacin, Inc. / NovaMedia</small></p>
               </div>
-              <div class="mpalbum__download" data-aos="fade-right" data-aos-offset="0" data-aos-anchor-placement="top-center" data-aos-delay="200">
+              <div class="mpalbum__download">
                 <a href="#"><img src="/dist/img/icon-itunes.png" alt="Available on iTunes"></a>
                 <a href="#"><img src="/dist/img/icon-spotify.png" alt="Listen on Spotify"></a>
                 <a href="#"><img src="/dist/img/icon-amazon.png" alt="Available on Amazon Music"></a>
               </div>
             </div>
             <div class="mpalbum__image">
-              <img :src="post.image" :alt="post.title" data-aos="fade-left" data-aos-offset="0" data-aos-anchor-placement="top-center" data-aos-delay="0">
+              <img :src="post.image" :alt="post.title" >
+            </div>
+          </div>
+
+        </div>
+      </div> 
+    </template>
+   
+   
+   
+    <!--    Gallery-->
+    <template id="galleryTemplate">
+      <div id="galleryAnchor">
+        <div class="mploading" v-show="!loaded"><div class="mploading__inner">Loading</div></div>
+        <div v-show="loaded">
+
+        <!--  Scroll Down Indicator       -->
+
+
+
+
+        <!--     Musicology Intro-->
+        <div class="mpintro">
+          <div class="mpintro__text">
+            <h2 class="rellax" data-rellax-speed="-1">Eye Gallery</h2>
+            <br><br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
+            <p>Praesent ut facilisis nulla, non maximus urna. Nunc feugiat urna et vestibulum pulvinar. Ut blandit rutrum urna, eget varius nibh dignissim ut. Aenean dictum sem ligula, at sollicitudin quam laoreet quis. Suspendisse in nibh neque. Integer quis diam hendrerit, vehicula ante eu, maximus nisi. In et mi mauris.</p>
+            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer maximus dui non ante vestibulum, vel tincidunt lorem sagittis. Etiam non justo id est consequat accumsan sed vitae leo. Quisque ac molestie ligula, a ultrices metus. Aliquam aliquam auctor tincidunt. Nunc fringilla tellus ut libero cursus venenatis. Mauris sit amet est ipsum. Ut id tempor elit. Morbi consectetur sed nisi at volutpat.</p>
+          </div>
+        </div>
+
+
+
+        <div class="mpbox">
+          <div class="mpbox__text">
+            <h4>Anthem <small>Featured Art</small></h4>
+          </div>
+          <div class="mpbox__mpcard mpfadein">
+            <div class="mpcard mpcard--gallery" ontouchstart="this.classList.toggle('hover');">
+              <div class="mpcard__inner">
+                <div class="mpcard__front">
+
+                </div>
+                <div class="mpcard__back">
+                  <div class="mpcard__back__inner">
+                    <router-link to="/gallery/canon-in-d"><i class="fa fa-plus-circle" aria-hidden="true"></i></router-link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--      Sound of Light Catalog-->
+        <div class="mpgal mpgal--gallery">
+          <div class="mpgal__header">
+            <h2>Sound of Light</h2>
+          </div>
+          <div v-for="post in posts" class="mpgal__item mpfadein">
+            <router-link :to="'/gallery/' + post.slug">
+              <img :src="post.image" :alt="post.title">
+            </router-link>
+          </div>
+        </div>
+
+
+        <!--      Sound Stage Modal Router Frame-->
+        <div class="mpmodal">
+          <router-view></router-view>
+        </div>
+
+
+
+
+        <!--      On the Record Narrative-->
+        <div class="mpintro">
+          <div class="mpintro__text">
+            <h2>Meets the Eye</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi soluta deserunt eaque, quod quidem totam laudantium, quos repellendus architecto et dolorem eum? Blanditiis sunt officiis vitae, necessitatibus nemo ipsam, amet.</p>
+          </div>
+        </div>
+
+      </div>
+     </div>
+    </template>
+    
+    
+    
+    <!--  Album Modal  -->
+    <template id="artTemplate">
+      <div>
+        <div class="mpmodal__overlay">
+          <a class="mpmodal__exit"></a>
+        </div>
+        <div class="mpmodal__box">
+          <div class="mpalbum">
+            <div class="mpalbum__close">
+              <a class="mpmodal__exit">&#x2715;</a>
+            </div>
+            <div class="mpalbum__description">
+              <div class="mpalbum__title">
+                <h3>{{post.title}}</h3>
+              </div>
+              <div class="mpalbum__content">
+                <div v-html="post.content"></div>
+                <p><small>Michael Yeaman &amp; Chris Rhodes<BR>© 2016 Metacin, Inc. / NovaMedia</small></p>
+              </div>
+<!--
+              <div class="mpalbum__download">
+                <a href="#"><img src="/dist/img/icon-itunes.png" alt="Available on iTunes"></a>
+                <a href="#"><img src="/dist/img/icon-spotify.png" alt="Listen on Spotify"></a>
+                <a href="#"><img src="/dist/img/icon-amazon.png" alt="Available on Amazon Music"></a>
+              </div>
+-->
+           <div class="mpalbum__song">
+             <audio src="/dist/mp3/odyssey.mp3" controls="controls" class="mpalbum__player">
+           </div>
+            </div>
+            <div class="mpalbum__image">
+              <img :src="post.image" :alt="post.title" >
             </div>
           </div>
 
@@ -310,14 +420,11 @@
 
     <script src="/vendor/jquery-3.1.0.js"></script>
     <script src="/vendor/particles.js"></script>
-<!--    <script src="/vendor/aos.js"></script>-->
     <script src="/vendor/rellax.js"></script>
-<!--    <script src="/vendor/vue.js"></script>-->
     <script src="/vendor/vue.2.js"></script>
-<!--    <script src="/vendor/vue-router.js"></script>-->
     <script src="/vendor/vue-router.2.js"></script>
     
-    <script src="/dist/js/app.js?v=0.0.1.3"></script>
-    <script src="/dist/js/vue-app.js?v=0.0.1.3"></script>
+    <script src="/dist/js/app.js?v=0.0.1.5"></script>
+    <script src="/dist/js/vue-app.js?v=0.0.1.5"></script>
   </body>
 </html>

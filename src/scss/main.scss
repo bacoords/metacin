@@ -6,6 +6,7 @@
 @import 'variables';
 @import 'animations';
 @import 'headers'; 
+@import 'compass'; 
 @import 'footer'; 
 
 @import 'mpscroll';
@@ -47,7 +48,6 @@ html {     -webkit-font-smoothing: antialiased; }
   position: relative;
 }
 
-* {}
 
 #particles{
   position:absolute;
@@ -63,9 +63,10 @@ html {     -webkit-font-smoothing: antialiased; }
 
 }
 
-
-
-//safari SVG centering issue
-.safari .main-entry--open-top .logo .svg-wrapper{
-  display:none;
+.coming-soon{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
