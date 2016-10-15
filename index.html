@@ -9,8 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="/dist/css/main.css?v=0.0.1.5">
-
+    <link rel="stylesheet" href="/dist/css/main.css?v=0.0.1.9">
   </head>
   <body>
     <!--[if lt IE 8]>
@@ -100,78 +99,80 @@
    
    <template id="featuredTemplate">
      <div id="featuredAnchor">
+       <div class="mploading" v-show="!loaded"><div class="mploading__inner">Loading</div></div>
+       <div v-show="loaded">    
      
-     
-     
-      <!--     Intro Box-->
-      <div class="mpintro">
-        <div class="mpintro__text">
-<!--          <h2 class="rellax" data-rellax-speed="-1">METACIN</h2>-->
-         <br><br>
-          <p class="u-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
-        </div>
-      </div>
-      
-      
-      
-      <div class="body-bg">
-        <!--     Featured Tune Box-->
-        <div class="mpbox">
-          <div class="mpbox__text">
-            <h4>Odyssey <small>Featured Tune</small></h4>
-            <router-link to="/music" >Visit Music Hall <i class="fa fa-arrow-right" aria-hidden="true"></i>
-  </router-link>
-          </div>
-          <div class="mpbox__mpcard mpfadein">
-            <div class="mpcard mpcard--music" ontouchstart="this.classList.toggle('hover');">
-              <div class="mpcard__inner">
-                <div class="mpcard__front">
 
-                </div>
-                <div class="mpcard__back">
-                  <div class="mpcard__back__inner">
-                    <i class="fa fa-play-circle" aria-hidden="true" @click="playAudio"></i>
-                    <audio src="/dist/mp3/odyssey.mp3" controls="controls" class="mpaudio__player">
+        <!--     Intro Box-->
+        <div class="mpintro">
+          <div class="mpintro__text">
+  <!--          <h2 class="rellax" data-rellax-speed="-1">METACIN</h2>-->
+           <br><br>
+            <p class="u-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
+          </div>
+        </div>
+
+
+
+        <div class="body-bg">
+          <!--     Featured Tune Box-->
+          <div class="mpbox">
+            <div class="mpbox__text">
+              <h4>Odyssey <small>Featured Tune</small></h4>
+              <router-link to="/music" >Visit Music Hall <i class="fa fa-arrow-right" aria-hidden="true"></i>
+    </router-link>
+            </div>
+            <div class="mpbox__mpcard mpfadein">
+              <div class="mpcard mpcard--music" ontouchstart="this.classList.toggle('hover');">
+                <div class="mpcard__inner">
+                  <div class="mpcard__front">
+
+                  </div>
+                  <div class="mpcard__back">
+                    <div class="mpcard__back__inner">
+                      <i class="fa fa-play-circle" aria-hidden="true" @click="playAudio"></i>
+                      <audio src="/dist/mp3/odyssey.mp3" controls="controls" class="mpaudio__player">
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <!--     Intro Box-->
-        <div class="mpintro">
-          <div class="mpintro__text">
-            <p class="u-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
-          </div>
-        </div>
-        
-        <!--     Featured Art Box-->
-        <div class="mpbox mpbox--reverse">
-          <div class="mpbox__text">
-            <h4>Anthem <small>Featured Art</small></h4>
-            <router-link to="/gallery" >Visit Eye Gallery <i class="fa fa-arrow-right" aria-hidden="true"></i> </router-link>
-          </div>
-          <div class="mpbox__mpcard mpfadein">
-            <div class="mpcard mpcard--gallery" ontouchstart="this.classList.toggle('hover');">
-              <div class="mpcard__inner">
-                <div class="mpcard__front">
 
-                </div>
-                <div class="mpcard__back">
-                  <div class="mpcard__back__inner">
-                    <router-link to="/gallery/canon-in-d"><i class="fa fa-plus-circle" aria-hidden="true"></i></router-link>
+          <!--     Intro Box-->
+          <div class="mpintro">
+            <div class="mpintro__text">
+              <p class="u-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
+            </div>
+          </div>
+
+          <!--     Featured Art Box-->
+          <div class="mpbox mpbox--reverse">
+            <div class="mpbox__text">
+              <h4>Anthem <small>Featured Art</small></h4>
+              <router-link to="/gallery" >Visit Eye Gallery <i class="fa fa-arrow-right" aria-hidden="true"></i> </router-link>
+            </div>
+            <div class="mpbox__mpcard mpfadein">
+              <div class="mpcard mpcard--gallery" ontouchstart="this.classList.toggle('hover');">
+                <div class="mpcard__inner">
+                  <div class="mpcard__front">
+
+                  </div>
+                  <div class="mpcard__back">
+                    <div class="mpcard__back__inner">
+                      <router-link to="/gallery/canon-in-d"><i class="fa fa-plus-circle" aria-hidden="true"></i></router-link>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!--     Intro Box-->
-        <div class="mpintro">
-          <div class="mpintro__text">
-            <p class="u-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
+          <!--     Intro Box-->
+          <div class="mpintro">
+            <div class="mpintro__text">
+              <p class="u-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
+            </div>
           </div>
         </div>
       </div>
@@ -424,7 +425,7 @@
     <script src="/vendor/vue.2.js"></script>
     <script src="/vendor/vue-router.2.js"></script>
     
-    <script src="/dist/js/app.js?v=0.0.1.5"></script>
-    <script src="/dist/js/vue-app.js?v=0.0.1.5"></script>
+    <script src="/dist/js/app.js?v=0.0.1.9"></script>
+    <script src="/dist/js/vue-app.js?v=0.0.1.9"></script>
   </body>
 </html>

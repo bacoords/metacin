@@ -20,64 +20,93 @@ var Home = Vue.extend({
       }
       this.playing = !this.playing;
       return;
+    },
+    preload : function(pictureUrls, callback) {
+        var i,
+            j,
+            loaded = 0;
+
+        for (i = 0, j = pictureUrls.length; i < j; i++) {
+            (function (img, src) {
+                img.onload = function () {                               
+                    if (++loaded == pictureUrls.length && callback) {
+                        callback();
+                    }
+                };
+
+                // Use the following callback methods to debug
+                // in case of an unexpected behavior.
+                img.onerror = function () {};
+                img.onabort = function () {};
+
+                img.src = src;
+            } (new Image(), pictureUrls[i]));
+        }
     }
   },
   mounted : function(){
     this.$nextTick(function (){
   
 
+      document.body.style.overflow = 'hidden';
+      var a = ['/dist/img/gallery-8.png','/dist/img/yeaman.png','/dist/img/pexels-2.jpg','/dist/img/neurons.jpg','/dist/img/pexels-1.jpg']; 
       var self = this;
-      $('.header__menu-item').click(function(){
-        if(!self.menu){
-          $('body').addClass('show-nav');
-          $('.header__menu-item').html('&#x2715;');
-        } else {
+      this.preload(a, function(){
+        self.loaded = true;
+        document.body.style.overflow = 'auto';
+ 
+        $('.header__menu-item').click(function(){
+          if(!self.menu){
+            $('body').addClass('show-nav');
+            $('.header__menu-item').html('&#x2715;');
+          } else {
+            $('body').removeClass('show-nav');
+            $('.header__menu-item').html('&#9776;');
+          } 
+          self.menu = !self.menu;
+        });
+
+        $('.header-nav__a').click(function(){    
           $('body').removeClass('show-nav');
           $('.header__menu-item').html('&#9776;');
-        } 
-        self.menu = !self.menu;
-      });
-
-      $('.header-nav__a').click(function(){    
-        $('body').removeClass('show-nav');
-        $('.header__menu-item').html('&#9776;');
-        self.menu = !self.menu;
-      });
-
-
-      $('html, body').scrollTop(0);
-
-
-
-
-          //Appear on animation
-      var $animation_elements = $('.mpfadein');
-      var $window = $(window);
-
-      function check_if_in_view() {
-        var window_height = $window.height();
-        var window_top_position = ($window.scrollTop() + 150);
-        var window_bottom_position = (window_top_position + window_height - 150);
-
-        $.each($animation_elements, function() {
-          var $element = $(this);
-          var element_height = $element.outerHeight();
-          var element_top_position = $element.offset().top;
-          var element_bottom_position = (element_top_position + element_height);
-
-          //check to see if this current container is within viewport
-          if ((element_bottom_position >= window_top_position) &&
-            (element_top_position <= window_bottom_position)) {
-            $element.addClass('mpfadein--active');
-          } else {
-            $element.removeClass('mpfadein--active');
-          }
+          self.menu = !self.menu;
         });
-      }
 
-      $window.on('scroll resize', check_if_in_view);
-      $window.trigger('scroll');
 
+        $('html, body').scrollTop(0);
+
+
+
+
+            //Appear on animation
+        var $animation_elements = $('.mpfadein');
+        var $window = $(window);
+
+        function check_if_in_view() {
+          var window_height = $window.height();
+          var window_top_position = ($window.scrollTop() + 150);
+          var window_bottom_position = (window_top_position + window_height - 150);
+
+          $.each($animation_elements, function() {
+            var $element = $(this);
+            var element_height = $element.outerHeight();
+            var element_top_position = $element.offset().top;
+            var element_bottom_position = (element_top_position + element_height);
+
+            //check to see if this current container is within viewport
+            if ((element_bottom_position >= window_top_position) &&
+              (element_top_position <= window_bottom_position)) {
+              $element.addClass('mpfadein--active');
+            } else {
+              $element.removeClass('mpfadein--active');
+            }
+          });
+        }
+
+        $window.on('scroll resize', check_if_in_view);
+        $window.trigger('scroll');
+
+      });
     });
   }
 });
