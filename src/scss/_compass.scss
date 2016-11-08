@@ -1,0 +1,193 @@
+
+.feat{
+  position: absolute;
+  text-decoration:none;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  margin:auto;
+  z-index:20;
+  width:200px;
+  height:200px;
+  perspective: 1000px;
+  transition:all 1s ease;
+  overflow:hidden;
+  border:solid 2px $right;
+//  transform: translate3d(-435px, 0, 0) rotateY(-30deg); 
+//  opacity: 0;
+//  pointer-events: none;
+  &__inner{
+    width:100%;
+    height:100%;
+    transition:background 2s ease;
+    display:flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    align-items:center;
+  }
+  h2{
+    color:$white;
+    text-align:center;
+    font-size:1.5rem;
+    line-height: 1.1;
+    margin:0 auto;
+    letter-spacing: 2px;
+    text-shadow:0px 3px 10px rgba(0,0,0,0.5);
+    transition: all 1s ease;
+  }
+}
+
+$feat-timing: 16s;
+
+.feat-featured{
+  background:url('../../src/img/yeaman.png') no-repeat center;
+  background-size:cover;
+  animation: feat-circle $feat-timing infinite;
+  animation-timing-function: linear;
+  animation-delay: ($feat-timing / 5) * -2;  
+}
+.feat-music{
+  background:url('../../src/img/pexels-1.jpg') no-repeat center;
+  background-size:cover;
+  animation: feat-circle $feat-timing infinite;
+  animation-timing-function: linear;
+  animation-delay:  ($feat-timing / 5) * -3;  
+}
+.feat-gallery{
+  background:url('../../src/img/gallery-8.png') no-repeat center;
+  background-size:cover;
+  animation: feat-circle $feat-timing infinite;
+  animation-timing-function: linear;
+  animation-delay: ($feat-timing / 5) * -4;  
+}
+.feat-events{
+  background:url('../../src/img/pexels-2.jpg') no-repeat center;
+  background-size:cover;
+  animation: feat-circle $feat-timing infinite;
+  animation-timing-function: linear;
+  animation-delay: ($feat-timing / 5) * 0;  
+} 
+.feat-laboratory{
+  background:url('../../src/img/neurons.jpg') no-repeat center;
+  background-size:cover;
+  animation: feat-circle $feat-timing infinite;
+  animation-timing-function: linear;
+  animation-delay: ($feat-timing / 5) * -1;  
+} 
+
+
+
+.compass{
+  display: block;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  padding-top: 45;
+  perspective: 500px;
+  z-index:3;
+  overflow: hidden;
+  
+  &__header{
+//    position: relative;
+    margin: 0 auto;
+    top:45px;
+  }
+  &__graphic{
+//    position: relative;
+    margin: 0 auto;
+//    top:200px;    
+  }
+  &__title{
+    margin:0;
+    padding:0;
+    font-weight:900;
+    text-align:center;
+    font-size: 3rem;
+    @media(min-width:$bp-md){
+      font-size:3rem;
+    }
+    @media(min-width:$bp-lg){
+      font-size:8rem;
+    }
+  }
+  &__subtitle{
+    margin:0;
+    padding:0;
+    font-weight:900;
+    font-size: 1.2rem;
+    text-align:center;
+    color:$right;
+    font-style: italic;
+    @media(min-width:$bp-md){
+      font-size: 1.5rem;
+    }
+    @media(min-width:$bp-lg){
+      font-size: 3rem;
+    }
+  }
+  
+  &.compass--active{
+    .feat{
+      animation: none;
+      display:none; 
+      border: none;
+      .feat__inner{
+        justify-content: center;
+        h2{
+          font-size:4rem;
+        }
+      }
+    }
+    .router-link-active{
+      opacity: 1;
+      display: block;
+      width:100%;
+      height:100vh;
+      transform:translate3d(0,0,0);           
+      pointer-events:none;
+      border-radius:0px;
+      box-shadow:none;  
+    }
+  }
+}
+
+
+
+
+@keyframes feat-circle{
+  0%{
+    transform: translate3d(-520px, 0, 0) rotateY(-30deg); 
+    opacity: 0;
+    box-shadow: 0px 5px 5px 0px rgba($white, 0.3);
+    pointer-events:none;
+  }
+  25%{
+    transform: translate3d(-270px, 0, 90px)  rotateY(-15deg);
+    opacity: 1;
+    box-shadow: 0px 5px 10px 0px rgba($white, 0.3);   
+    pointer-events:auto;
+  }
+  50%{
+    transform: translate3d(0, 0, 125px);
+    box-shadow: 0px 5px 30px 0px rgba($white, 0.2);
+    pointer-events:auto;
+  }
+  75%{
+    transform: translate3d(270px, 0, 90px)  rotateY(15deg);
+    opacity: 1;
+    box-shadow: 0px 5px 10px 0px rgba($white, 0.3);
+    pointer-events:auto;
+  }
+  100%{ 
+    transform: translate3d(520px, 0, 0) rotateY(30deg);
+    opacity:0;
+    box-shadow: 0px 5px 5px 0px rgba($white, 0.3);
+    pointer-events:none;
+  }
+}
+
+
+
