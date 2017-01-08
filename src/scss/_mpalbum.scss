@@ -2,15 +2,17 @@
 
 .mpalbum{
   overflow:auto;
+  overflow-x: hidden;
   display:flex;
   flex-direction: column-reverse;
   margin:0 auto;
   padding-top:40px;
-  @media(min-width:$bp-md){
+  @media(min-width:$bp-lg){
     flex-direction: row;
-    max-width: inherit;
+    max-width: 1200px;
   }
   &__image{
+    position: relative;
     flex:1;
     overflow: visible;
     padding:2rem 0.5rem; 
@@ -90,5 +92,26 @@
       text-decoration: none;
       cursor: pointer;
     }
+  }
+  &__progress{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-top: 1.75rem;
+    margin-left: 0.5rem;
+    height: calc(100% - 3.5rem);
+    width: calc(100% - 1rem);
+  }
+  &__progress-bar{
+    position: relative;
+    height: 100%;
+    width: 0%;
+//    width: 5px;
+    left: 0;
+    top: 0; 
+    border-right:solid 5px rgba(0,0,0,0.75); 
+//    border-radius: 5px;
+//    box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
   }
 }

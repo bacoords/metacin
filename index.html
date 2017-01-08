@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="/dist/css/main.css?v=0.0.1.9">
+    <link rel="stylesheet" href="/dist/css/main.css?v=0.0.2.4">
   </head>
   <body>
     <!--[if lt IE 8]>
@@ -28,13 +28,13 @@
          </a>
          
          <nav class="header-nav">
-           <ul class="header-nav__ul">
-             <li href="header-nav__li"><router-link class="header-nav__a" to="/">Home</router-link></li>
-             <li href="header-nav__li"><router-link class="header-nav__a" to="/music">Music Hall</router-link></li>
-             <li href="header-nav__li"><router-link class="header-nav__a" to="/gallery">Eye Gallery</router-link></li>
-             <li href="header-nav__li"><router-link class="header-nav__a" to="/laboratory">Laboratory</router-link></li>
-             <li href="header-nav__li"><router-link class="header-nav__a" to="/events">Events</router-link></li>
-           </ul>
+           <div class="header-nav__wrapper">
+             <router-link class="header-nav__a" to="/"><span>Home</span></router-link>
+             <router-link class="header-nav__a" to="/music"><span>Music Hall</span></router-link>
+             <router-link class="header-nav__a" to="/gallery"><span>Eye Gallery</span></router-link>
+             <router-link class="header-nav__a" to="/laboratory"><span>Laboratory</span></router-link>
+             <router-link class="header-nav__a" to="/events"><span>Events</span></router-link>
+           </div>
          </nav>
          
          
@@ -76,8 +76,10 @@
     
       
       <div class="router-contents">
-        <div class="featured--spacer"></div>
-       <div class="mpscroll">
+        <div class="featured--spacer">
+          
+        </div>
+        <div class="mpscroll">
           <a class="mpscroll__inner">
              &#10151;
           </a>
@@ -99,8 +101,12 @@
    
    <template id="featuredTemplate">
      <div id="featuredAnchor">
-       <div class="mploading" v-show="!loaded"><div class="mploading__inner">Loading</div></div>
-       <div v-show="loaded">    
+       <div class="mploading" v-show="isLoading">
+           <div class="mploading__bouncer">
+             <div class="double-bounce1"></div>
+             <div class="double-bounce2"></div>
+           </div></div>
+       <div v-show="!isLoading">    
      
 
         <!--     Intro Box-->
@@ -186,8 +192,13 @@
     <!--    Music Hall-->
     <template id="musicTemplate">
       <div id="musicAnchor">
-        <div class="mploading" v-show="!loaded"><div class="mploading__inner">Loading</div></div>
-        <div v-show="loaded">
+        <div class="mploading" v-show="isLoading">
+           <div class="mploading__bouncer">
+             <div class="double-bounce1"></div>
+             <div class="double-bounce2"></div>
+           </div>
+        </div>
+        <div v-show="!isLoading">
 
         <!--  Scroll Down Indicator       -->
 
@@ -304,8 +315,12 @@
     <!--    Gallery-->
     <template id="galleryTemplate">
       <div id="galleryAnchor">
-        <div class="mploading" v-show="!loaded"><div class="mploading__inner">Loading</div></div>
-        <div v-show="loaded">
+        <div class="mploading" v-show="isLoading">
+           <div class="mploading__bouncer">
+             <div class="double-bounce1"></div>
+             <div class="double-bounce2"></div>
+           </div></div>
+        <div v-show="!isLoading">
 
         <!--  Scroll Down Indicator       -->
 
@@ -399,19 +414,16 @@
                 <div v-html="post.content"></div>
                 <p><small>Michael Yeaman &amp; Chris Rhodes<BR>© 2016 Metacin, Inc. / NovaMedia</small></p>
               </div>
-<!--
-              <div class="mpalbum__download">
-                <a href="#"><img src="/dist/img/icon-itunes.png" alt="Available on iTunes"></a>
-                <a href="#"><img src="/dist/img/icon-spotify.png" alt="Listen on Spotify"></a>
-                <a href="#"><img src="/dist/img/icon-amazon.png" alt="Available on Amazon Music"></a>
+              <div class="mpalbum__song">
+                <audio src="/dist/mp3/odyssey.mp3" controls="controls" class="mpalbum__player">
+                
               </div>
--->
-           <div class="mpalbum__song">
-             <audio src="/dist/mp3/odyssey.mp3" controls="controls" class="mpalbum__player">
-           </div>
             </div>
             <div class="mpalbum__image">
               <img :src="post.image" :alt="post.title" >
+              <div class="mpalbum__progress">
+                <div class="mpalbum__progress-bar"></div>
+              </div>
             </div>
           </div>
 
@@ -421,20 +433,21 @@
 
     <script src="/vendor/jquery-3.1.0.js"></script>
     <script src="/vendor/particles.js"></script>
-<!--    <script src="/vendor/rellax.js"></script>-->
     <script src="/vendor/vue.2.js"></script>
     <script src="/vendor/vue-router.2.js"></script>
+    <script src="/vendor/vuex.2.js"></script>
     
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TimelineMax.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script>
     
+    <script src="/vendor/gsap-then.browser.js"></script>
+    <script src="/vendor/addIndicators.js"></script>
     
-    <script src="/dist/js/app.js?v=0.0.1.9"></script>
-    <script src="/dist/js/vue-app.js?v=0.0.1.9"></script>
+
+    <script src="/dist/js/vue-app.js?v=0.0.2.4"></script>
     
   </body>
 </html>
