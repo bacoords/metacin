@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>METACIN Demo</title>
+    <title>Metacin - Beyond Metacin</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="/dist/css/main.css?v=0.0.2.4">
+    <link rel="stylesheet" href="/dist/css/main.css?v=0.0.2.8">
   </head>
   <body>
     <!--[if lt IE 8]>
@@ -75,7 +75,7 @@
       
     
       
-      <div class="router-contents">
+      <div class="router-contents" v-bind:class="$route.name === 'music' || $route.name === 'gallery' || $route.name === 'laboratory' || $route.name === 'events' ? 'subpage-active' : ''">
         <div class="featured--spacer">
           
         </div>
@@ -436,6 +436,7 @@
     <script src="/vendor/vue.2.js"></script>
     <script src="/vendor/vue-router.2.js"></script>
     <script src="/vendor/vuex.2.js"></script>
+    <script src="/vendor/modernizr.custom.js"></script>
     
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
@@ -444,10 +445,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script>
     
     <script src="/vendor/gsap-then.browser.js"></script>
-    <script src="/vendor/addIndicators.js"></script>
+<!--    <script src="/vendor/addIndicators.js"></script>-->
     
 
-    <script src="/dist/js/vue-app.js?v=0.0.2.4"></script>
+    <script src="/dist/js/vue-app.js?v=0.0.2.8"></script>
     
   </body>
 </html>

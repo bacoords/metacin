@@ -20,7 +20,7 @@
     font-weight:700;
     text-decoration:none;
     letter-spacing: 2px;
-    z-index:7;
+    z-index:50;
     opacity: 0;
   }
   &--active{
@@ -106,7 +106,7 @@
 }
 
 body.show-nav{
-  overflow: hidden;
+  overflow-y: hidden;
   nav.header-nav{
     display: inherit;
     animation: slideInRight 500ms;
@@ -124,13 +124,3 @@ body.hide-nav{
   }
 }
   
-.router-content{
-  min-height:100vh;
-}
-.featured--spacer{
-  display: block;
-  width:100%;
-  height:650px;
-  height:100vh;
-  
-}

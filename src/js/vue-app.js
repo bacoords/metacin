@@ -27,16 +27,18 @@ function animFeatActive(el){
   var heading = el + ' > .feat__inner > h2';
   
   var tl = new TimelineMax();
-  tl.add(TweenMax.to(el, 0.3, {x:0, y:0, z:0, rotationY: 0, scale: 1, width: '100%', height: '100vh', delay:0}));
-  tl.add(TweenMax.to(heading, 0, {y:'1000px', delay:0}));
-  tl.add(TweenMax.to(el, 0, {className: '+=feat--active', delay:0.9}));
-  tl.add(TweenMax.to(heading, 0.3, {y:'-100px', delay:0}));
+    tl.add(TweenMax.to(el, 0.3, {x:0, y:0, z:0, rotationY: 0, scale: 1, width: '100%', height: '100vh', delay:0}));
+    tl.add(TweenMax.to(heading, 0, {y:'1000px', delay:0}));
+    tl.add(TweenMax.to(el, 0, {className: '+=feat--active', delay:0.9}));
+    tl.add(TweenMax.to(heading, 0.3, {y:'-100px', delay:0}));
+  
   return tl;
 }
 
 
+
 // Adds class to appear on animation
-function mpFadeInAlt() {
+function mpFadeIn() {
   
   var $window = $(window);
   var $animation_elements = $('.mpfadein');
@@ -61,6 +63,15 @@ function mpFadeInAlt() {
   });
 }
 
+
+
+// Set page title
+function setDocTitle(title){
+  if(title) document.title = title + ' | Metacin - Beyond Medicin';
+  else document.title = 'Metacin - Beyond Medicine';
+  return
+}
+ 
 
 
 // Some global Methods
@@ -95,6 +106,8 @@ var mixin = {
     }
   }
 }
+
+
 
 
 
@@ -159,39 +172,46 @@ var Home = Vue.extend({
         focus : {z:0, rotationY: 0, scale: 1},
         holdLeft : {x:'-'+u+'px', z:'-100px', rotationY:'15deg', scale: 0.8},
         holdRight : { scale: 0.8},
-        holdOut : {x:'-'+uD+'px', z:'-100px', rotationZ:'-25deg', scale: 0.6}
+        holdTouch : {x: 0, y: '80px', z:'0', height: '100px', width: '300px', rotationY:'0deg', scale: 1}
       };
       self.feat[1] = { 
         elem: document.getElementsByClassName('feat-laboratory')[0],
         focus : {x:'-'+uB+'px', z:0, rotationY: 0, scale: 1},
         holdLeft : {x:'-'+uA+'px', z:'-75px', rotationY:'15deg', scale: 0.8},
-        holdRight : {x:''+uC+'px', z:'-10px', rotationY:'-15deg', scale: 0.8}
+        holdRight : {x:''+uC+'px', z:'-10px', rotationY:'-15deg', scale: 0.8},
+        holdTouch : {x: 0, y: '185px', z:'0', height: '100px', width: '300px', rotationY:'0deg', scale: 1}
       };
       self.feat[2] = {
         elem: document.getElementsByClassName('feat-featured')[0],
         focus : {x: 0, z: 0,  z:0, rotationY: 0, scale: 1},
         holdLeft : {x:'-'+uB+'px', z:'-30px', rotationY:'15deg', scale: 0.8},
-        holdRight : {x:''+uB+'px', z:'-30px', rotationY:'-15deg', scale: 0.8}
+        holdRight : {x:''+uB+'px', z:'-30px', rotationY:'-15deg', scale: 0.8},
+        holdTouch : {x: 0, y: '-105px', z:'0', height: '240px', width: '300px', rotationY:'0deg', scale: 1}
       };
       self.feat[3] = {
         elem: document.getElementsByClassName('feat-music')[0],
         focus : {x:''+uB+'px',z:0, rotationY: 0, scale: 1},
         holdLeft : {x:'-'+uC+'px', z:'-10px', rotationY:'15deg', scale: 0.8},
-        holdRight : { x:uA+'px', z:'-75px', rotationY:'-15deg', scale: 0.8}
+        holdRight : { x:uA+'px', z:'-75px', rotationY:'-15deg', scale: 0.8},
+        holdTouch : {x: 0, y: '290px', z:'0', height: '100px', width: '300px', rotationY:'0deg', scale: 1}
       };
       self.feat[4] = {
         elem: document.getElementsByClassName('feat-gallery')[0],
         focus : {z:0, rotationY: 0, scale: 1},
         holdLeft : { scale: 0.8},
-        holdRight : {x:u+'px', z:'-100px', rotationY:'-15deg', scale: 0.8}
+        holdRight : {x:u+'px', z:'-100px', rotationY:'-15deg', scale: 0.8},
+        holdTouch : {x: 0, y: '395px', z:'0', height: '100px', width: '300px', rotationY:'0deg', scale: 1}
       };
       
     },
     animDefaults: function(){ //Set homepage defaults
       var self = this;
+      
+      
+      
       //Return to default on mouseleave
       self.feat.forEach(function(el){
-        TweenMax.to(el.elem, 0, {clearProps:'width,height'});
+        TweenMax.to(el.elem, 0, {clearProps:'width,height,y,rotationY'});
         var heading = el.elem.children[0].children[0];
         TweenMax.to(heading, 0, {clearProps:'y'}); 
         
@@ -219,14 +239,7 @@ var Home = Vue.extend({
       });
       TweenMax.to(self.feat[0].elem, 0, {rotationZ: '-45deg', x: '-500px'});
       TweenMax.set(self.feat[0].elem, {zIndex:21});
-//      TweenMax.to(self.feat[1].elem, 0, self.feat[1].holdLeft);
-//      TweenMax.set(self.feat[1].elem, {zIndex:23});
-//      TweenMax.to(self.feat[2].elem, 0, self.feat[2].focus);
-//      TweenMax.set(self.feat[2].elem, {zIndex:25});
-//      TweenMax.to(self.feat[3].elem, 0, self.feat[3].holdRight);
-//      TweenMax.set(self.feat[3].elem, {zIndex:23});
-//      TweenMax.to(self.feat[4].elem, 0, self.feat[4].holdRight);
-//      TweenMax.set(self.feat[4].elem, {zIndex:21});
+      
       var sceneIn = new ScrollMagic.Scene({
           triggerElement: el,
           triggerHook: 'onEnter',
@@ -306,27 +319,36 @@ var Home = Vue.extend({
       });
 
     },
-    animScrollDown: function(){
+    animMobile: function(){
       var self = this;
-      
-      // Create timeline
+                               
       var tl = new TimelineMax();
-      tl.add(TweenMax.to(self.feat[0].elem, 0, self.feat[0].holdOut));
+
+      self.feat.forEach(function(el){
+        // Clear Defaults
+        TweenMax.to(el.elem, 0, {clearProps:'width,height,y'});
+        var heading = el.elem.children[0].children[0];
+        TweenMax.to(heading, 0, {clearProps:'y'}); 
+ 
+        // Display for Touch
+        tl.add(TweenMax.to(el.elem, 0, el.holdTouch));
+        tl.add(TweenMax.to(heading, 0, {y: '-40px'}));
+        
+      });
       
-      // Create scene
-      var scene = new ScrollMagic.Scene({
-          triggerElement: '.feat-featured',
-          triggerHook: 0
-        })
-        .setTween(tl)
-        .addIndicators({name:'hello'})
-        .addTo(controller);
       
+      tl.play();
+      console.log('Anim Touch');
     }
   },
   mounted : function(){
     this.$nextTick(function (){
   
+      
+      // Update title
+      setDocTitle('Welcome');
+      
+      
       // Turn on loading
       store.commit('loadingOn');
       
@@ -371,20 +393,30 @@ var Home = Vue.extend({
         //Tween Max Animations.
         function animInit(){
           self.animCreate();
-          self.animListeners();
-          self.animDefaults();
-//          self.animScrollDown();
+          
+          if($(window).width() < 500 || Modernizr.touchevents){
+            self.animMobile();
+          }else{
+            self.animListeners();
+            self.animDefaults();
+          }
         }
         animInit();
         
+        
+        // Reanimate on Resize
+        var $window = $(window);
+
+        if(self.$route.params.name === 'home') {
+          $window.on('resize', animInit);
+        }
         
         
         
         
         // Show featureds on animation
-        mpFadeInAlt();
-        var $window = $(window);
-        $window.on('scroll resize', mpFadeInAlt);
+        mpFadeIn();
+        $window.on('scroll resize', mpFadeIn);
         $window.trigger('scroll');
 
 
@@ -640,7 +672,10 @@ var Music = Vue.extend({
   mounted : function(){
     this.$nextTick(function(){
    
- 
+     // Update title
+      setDocTitle('Music Hall');
+      
+      
       // Get Animation Header
       var tl = animFeatActive('.feat-music');
       var self = this;
@@ -677,9 +712,9 @@ var Music = Vue.extend({
           $('html, body').scrollTop(0);
 
           // Show featureds on animation
-          mpFadeInAlt();
+          mpFadeIn();
           var $window = $(window);
-          $window.on('scroll resize', mpFadeInAlt);
+          $window.on('scroll resize', mpFadeIn);
           $window.trigger('scroll');
 
         });
@@ -757,6 +792,9 @@ var Gallery = Vue.extend({
   methods : {},
   mounted : function(){
     this.$nextTick(function(){
+   
+     // Update title
+      setDocTitle('Eye Gallery');
 
  
       // Get Animation Header
@@ -797,9 +835,9 @@ var Gallery = Vue.extend({
           
           
           // Show featureds on animation
-          mpFadeInAlt();
+          mpFadeIn();
           var $window = $(window);
-          $window.on('scroll resize', mpFadeInAlt);
+          $window.on('scroll resize', mpFadeIn);
           $window.trigger('scroll');
 
         });
@@ -825,6 +863,9 @@ var Laboratory = Vue.extend({
   },
   mounted : function(){
     this.$nextTick(function(){
+   
+        // Update title
+        setDocTitle('Laboratory');
 
         // Animate Header
         var tl = animFeatActive('.feat-laboratory');
@@ -850,6 +891,11 @@ var Events = Vue.extend({
   },
   mounted : function(){
     this.$nextTick(function(){
+   
+     // Update title
+      setDocTitle('Events');
+      
+      
      // Animate Header
       var tl = animFeatActive('.feat-events');
       tl.play();
@@ -884,6 +930,10 @@ var Album = Vue.extend({
   methods : {
     closeAlbum : function(){
       router.push({path : '/music'});
+      
+   
+      // Update title
+      setDocTitle('Music Hall');
       return;
     }
   },
@@ -899,6 +949,9 @@ var Album = Vue.extend({
       console.log(p[0]);
       this.post = Object.assign({}, { content : p[0].content, image : p[0].image, slug : p[0].slug, title : p[0].title});
 
+   
+     // Update title
+      setDocTitle(this.post.title);
 
       // Display Properties
       $('.mpmodal').addClass('mpmodal--active');
@@ -949,6 +1002,8 @@ var Art = Vue.extend({
   methods : {
     closeAlbum : function(){
       router.push({path : '/gallery'});
+      // Update title
+      setDocTitle('Eye Gallery');
       return;
     }
   },
@@ -961,6 +1016,9 @@ var Art = Vue.extend({
       });
       this.post = Object.assign({}, { content : p[0].content, image : p[0].image, slug : p[0].slug, title : p[0].title });
 
+   
+     // Update title
+      setDocTitle(this.post.title);
 
       // Display Properties
       $('.mpmodal').addClass('mpmodal--active');
@@ -1060,7 +1118,7 @@ var router = new VueRouter({
   ]
 });
 
-
+ 
 
 // Mount app and launch
 var app = new Vue({
