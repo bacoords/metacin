@@ -2,32 +2,44 @@
 
 
 .header{
-  position:absolute;
+  position:fixed;
   top:0;
   left:0;
   width:100%;
-  height:60px;
+  height:75px;
   z-index:25;
   display:flex;
   align-items:center;
   justify-content:space-between;
   transition:opacity 1s ease;
-  &__title{
-    font-size:1.5rem;
+//  background: $primary-dk;
+  &__site-info{
     padding:0.5rem 0.5rem 0.5rem 1rem;
-    color:rgba(256,256,256,1) !important;
     flex-grow: 0;
-    font-weight:700;
-    text-decoration:none;
-    letter-spacing: 2px;
     z-index:50;
     opacity: 0;
   }
-  &--active{
-    .header__title{
-      opacity:1;
-    }
+  &__title{
+    font-size:2.5rem;
+    color:rgba(256,256,256,1);
+    font-weight:700;
+    text-decoration:none;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+  &__subtitle{
+    font-size:1rem;
+    color:rgba(256,256,256,1);
+    font-weight:400;
+    text-decoration:none;
+    letter-spacing: 2px;
+    text-align: center;
     
+  }
+  &--active{
+    .header__title, .header__subtitle{
+      font-size:1.5rem;
+    }
   }
   &__menu-item{
     position: relative;
@@ -51,12 +63,11 @@
   }
   nav.header-nav{
     position: fixed;
-//    display: none;
     top:0;
     left:0;
     width:100%;
     height:100%;
-    background:$body-bg;
+    background:$primary-dk;
     z-index: 40;
     transform:  translateX(200%);
     .header-nav__wrapper{
@@ -109,8 +120,8 @@ body.show-nav{
   overflow-y: hidden;
   nav.header-nav{
     display: inherit;
-    animation: slideInRight 500ms;
-    transform:  translateX(0%);
+    animation: slideInTop 500ms;
+    transform:  translateY(0%);
   }
   .mpscroll{
     display:none;
@@ -119,8 +130,8 @@ body.show-nav{
 
 body.hide-nav{
   nav.header-nav{
-    animation: slideOutRight 500ms;
-    transform:  translateX(200%);
+    animation: slideOutTop 500ms;
+    transform:  translateY(-200%);
   }
 }
   

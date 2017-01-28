@@ -156,190 +156,190 @@ var Home = Vue.extend({
       this.playing = !this.playing;
       return;
     },
-    animCreate : function (){ //Create original Elements
-      var self = this;
-      //Base unit for sizing
-      
-      
-      var u = (window.innerWidth * 0.33), //Full Unit
-        uA = u * 0.85,
-        uB = u * 0.7,
-        uC = u * 0.55,
-        uD = u * 2;
-        
-      self.feat[0] = {
-        elem: document.getElementsByClassName('feat-events')[0],
-        focus : {z:0, rotationY: 0, scale: 1},
-        holdLeft : {x:'-'+u+'px', z:'-100px', rotationY:'15deg', scale: 0.8},
-        holdRight : { scale: 0.8},
-        holdTouch : {x: 0, y: '80px', z:'0', height: '100px', width: '300px', rotationY:'0deg', scale: 1}
-      };
-      self.feat[1] = { 
-        elem: document.getElementsByClassName('feat-laboratory')[0],
-        focus : {x:'-'+uB+'px', z:0, rotationY: 0, scale: 1},
-        holdLeft : {x:'-'+uA+'px', z:'-75px', rotationY:'15deg', scale: 0.8},
-        holdRight : {x:''+uC+'px', z:'-10px', rotationY:'-15deg', scale: 0.8},
-        holdTouch : {x: 0, y: '185px', z:'0', height: '100px', width: '300px', rotationY:'0deg', scale: 1}
-      };
-      self.feat[2] = {
-        elem: document.getElementsByClassName('feat-featured')[0],
-        focus : {x: 0, z: 0,  z:0, rotationY: 0, scale: 1},
-        holdLeft : {x:'-'+uB+'px', z:'-30px', rotationY:'15deg', scale: 0.8},
-        holdRight : {x:''+uB+'px', z:'-30px', rotationY:'-15deg', scale: 0.8},
-        holdTouch : {x: 0, y: '-105px', z:'0', height: '240px', width: '300px', rotationY:'0deg', scale: 1}
-      };
-      self.feat[3] = {
-        elem: document.getElementsByClassName('feat-music')[0],
-        focus : {x:''+uB+'px',z:0, rotationY: 0, scale: 1},
-        holdLeft : {x:'-'+uC+'px', z:'-10px', rotationY:'15deg', scale: 0.8},
-        holdRight : { x:uA+'px', z:'-75px', rotationY:'-15deg', scale: 0.8},
-        holdTouch : {x: 0, y: '290px', z:'0', height: '100px', width: '300px', rotationY:'0deg', scale: 1}
-      };
-      self.feat[4] = {
-        elem: document.getElementsByClassName('feat-gallery')[0],
-        focus : {z:0, rotationY: 0, scale: 1},
-        holdLeft : { scale: 0.8},
-        holdRight : {x:u+'px', z:'-100px', rotationY:'-15deg', scale: 0.8},
-        holdTouch : {x: 0, y: '395px', z:'0', height: '100px', width: '300px', rotationY:'0deg', scale: 1}
-      };
-      
-    },
-    animDefaults: function(){ //Set homepage defaults
-      var self = this;
-      
-      
-      
-      //Return to default on mouseleave
-      self.feat.forEach(function(el){
-        TweenMax.to(el.elem, 0, {clearProps:'width,height,y,rotationY'});
-        var heading = el.elem.children[0].children[0];
-        TweenMax.to(heading, 0, {clearProps:'y'}); 
-        
-      });
-      TweenMax.to(self.feat[0].elem, 0, self.feat[0].holdLeft);
-      TweenMax.set(self.feat[0].elem, {zIndex:21});
-      TweenMax.to(self.feat[1].elem, 0, self.feat[1].holdLeft);
-      TweenMax.set(self.feat[1].elem, {zIndex:23});
-      TweenMax.to(self.feat[2].elem, 0, self.feat[2].focus);
-      TweenMax.set(self.feat[2].elem, {zIndex:25});
-      TweenMax.to(self.feat[3].elem, 0, self.feat[3].holdRight);
-      TweenMax.set(self.feat[3].elem, {zIndex:23});
-      TweenMax.to(self.feat[4].elem, 0, self.feat[4].holdRight);
-      TweenMax.set(self.feat[4].elem, {zIndex:21});
-      
-      
-    },
-    animFrontPageScroll: function(){ //Set homepage defaults
-      var self = this;
-      //Return to default on mouseleave
-      self.feat.forEach(function(el){
-        TweenMax.to(el.elem, 0, {clearProps:'width,height'});
-        var heading = el.elem.children[0].children[0];
-        TweenMax.to(heading, 0, {clearProps:'y'});       
-      });
-      TweenMax.to(self.feat[0].elem, 0, {rotationZ: '-45deg', x: '-500px'});
-      TweenMax.set(self.feat[0].elem, {zIndex:21});
-      
-      var sceneIn = new ScrollMagic.Scene({
-          triggerElement: el,
-          triggerHook: 'onEnter',
-          reverse: true
-        })
-        .setTween(el, 0.3, {opacity: 1, scale: 1}) // trigger a TweenMax.to tween
-        .addTo(controller); 
-      
-    },
-    animListeners: function(){ // Add all listeners
-      
-      var self = this;
-      
-      // Move into focus on mouseenter
-      self.feat[0].elem.addEventListener('mouseenter', function(e){
-        var tl = new TimelineMax();
-        tl.add( TweenMax.to(self.feat[0].elem, 0, self.feat[0].focus) );
-        tl.add( TweenMax.set(self.feat[0].elem,{zIndex:25}) );
-        tl.add( TweenMax.to(self.feat[1].elem, 0, self.feat[1].holdRight) );
-        tl.add( TweenMax.set(self.feat[1].elem,{zIndex:24}) );
-        tl.add( TweenMax.to(self.feat[2].elem, 0, self.feat[2].holdRight) );
-        tl.add( TweenMax.set(self.feat[2].elem,{zIndex:23}) );
-        tl.add( TweenMax.set(self.feat[3].elem,{zIndex:22}) );
-        tl.play();
-      });
-      self.feat[1].elem.addEventListener('mouseenter', function(e){
-        var tl = new TimelineMax();
-        tl.add( TweenMax.to(self.feat[1].elem, 0, self.feat[1].focus) );
-        tl.add( TweenMax.set(self.feat[1].elem,{zIndex:25}) );
-        tl.add( TweenMax.to(self.feat[2].elem, 0, self.feat[2].holdRight) );
-        tl.add( TweenMax.set(self.feat[2].elem,{zIndex:24}) );
-        tl.play();
-      });
-      self.feat[3].elem.addEventListener('mouseenter', function(e){
-        var tl = new TimelineMax();
-        tl.add( TweenMax.to(self.feat[3].elem, 0, self.feat[3].focus) );
-        tl.add( TweenMax.set(self.feat[3].elem,{zIndex:25}) );
-        tl.add( TweenMax.to(self.feat[2].elem, 0, self.feat[2].holdLeft) );
-        tl.add( TweenMax.set(self.feat[2].elem,{zIndex:24}) );
-        tl.play();
-      });
-      self.feat[4].elem.addEventListener('mouseenter', function(e){
-        var tl = new TimelineMax();
-        tl.add( TweenMax.to(self.feat[4].elem, 0, self.feat[4].focus) );
-        tl.add( TweenMax.set(self.feat[4].elem,{zIndex:25}) );
-        tl.add( TweenMax.to(self.feat[3].elem, 0, self.feat[3].holdLeft) );
-        tl.add( TweenMax.set(self.feat[3].elem,{zIndex:24}) );
-        tl.add( TweenMax.to(self.feat[2].elem, 0, self.feat[2].holdLeft) );
-        tl.add( TweenMax.set(self.feat[1].elem,{zIndex:22}) );
-        tl.add( TweenMax.set(self.feat[2].elem,{zIndex:23}) );
-        tl.add( TweenMax.set(self.feat[3].elem,{zIndex:24}) );
-        tl.play();
-      }); 
- 
-      // Return to default on mouseleave
-      self.feat.forEach(function(el){
-        el.elem.addEventListener('mouseleave', self.animDefaults);
-      });
-
-      // Animations when clicked to load
-      self.feat.forEach(function(el, i){
-        el.elem.addEventListener('click', function(e){
-          
-          //exit if click came from other element
-          if (el.elem !== e.target) return;
-          
-          //exit if feat[2] 
-          if (i == 2) return;
-          
-          // Cancel mouseleave event while subroute is loaded
-          e.target.removeEventListener('mouseleave', self.animDefaults);
-          
-//          var tl = self.animFeatActive(e.target);
-//          tl.play();
-          
-        }, false);
-      });
-
-    },
-    animMobile: function(){
-      var self = this;
-                               
-      var tl = new TimelineMax();
-
-      self.feat.forEach(function(el){
-        // Clear Defaults
-        TweenMax.to(el.elem, 0, {clearProps:'width,height,y'});
-        var heading = el.elem.children[0].children[0];
-        TweenMax.to(heading, 0, {clearProps:'y'}); 
- 
-        // Display for Touch
-        tl.add(TweenMax.to(el.elem, 0, el.holdTouch));
-        tl.add(TweenMax.to(heading, 0, {y: '-40px'}));
-        
-      });
-      
-      
-      tl.play();
-      console.log('Anim Touch');
-    }
+//    animCreate : function (){ //Create original Elements
+//      var self = this;
+//      //Base unit for sizing
+//      
+//      
+//      var u = (window.innerWidth * 0.33), //Full Unit
+//        uA = u * 0.85,
+//        uB = u * 0.7,
+//        uC = u * 0.55,
+//        uD = u * 2;
+//        
+//      self.feat[0] = {
+//        elem: document.getElementsByClassName('feat-events')[0],
+//        focus : {z:0, rotationY: 0, scale: 1},
+//        holdLeft : {x:'-'+u+'px', z:'-100px', rotationY:'15deg', scale: 0.8},
+//        holdRight : { scale: 0.8},
+//        holdTouch : {x: 0, y: '80px', z:'0', height: '100px', width: '300px', rotationY:'0deg', scale: 1}
+//      };
+//      self.feat[1] = { 
+//        elem: document.getElementsByClassName('feat-laboratory')[0],
+//        focus : {x:'-'+uB+'px', z:0, rotationY: 0, scale: 1},
+//        holdLeft : {x:'-'+uA+'px', z:'-75px', rotationY:'15deg', scale: 0.8},
+//        holdRight : {x:''+uC+'px', z:'-10px', rotationY:'-15deg', scale: 0.8},
+//        holdTouch : {x: 0, y: '185px', z:'0', height: '100px', width: '300px', rotationY:'0deg', scale: 1}
+//      };
+//      self.feat[2] = {
+//        elem: document.getElementsByClassName('feat-featured')[0],
+//        focus : {x: 0, z: 0,  z:0, rotationY: 0, scale: 1},
+//        holdLeft : {x:'-'+uB+'px', z:'-30px', rotationY:'15deg', scale: 0.8},
+//        holdRight : {x:''+uB+'px', z:'-30px', rotationY:'-15deg', scale: 0.8},
+//        holdTouch : {x: 0, y: '-105px', z:'0', height: '240px', width: '300px', rotationY:'0deg', scale: 1}
+//      };
+//      self.feat[3] = {
+//        elem: document.getElementsByClassName('feat-music')[0],
+//        focus : {x:''+uB+'px',z:0, rotationY: 0, scale: 1},
+//        holdLeft : {x:'-'+uC+'px', z:'-10px', rotationY:'15deg', scale: 0.8},
+//        holdRight : { x:uA+'px', z:'-75px', rotationY:'-15deg', scale: 0.8},
+//        holdTouch : {x: 0, y: '290px', z:'0', height: '100px', width: '300px', rotationY:'0deg', scale: 1}
+//      };
+//      self.feat[4] = {
+//        elem: document.getElementsByClassName('feat-gallery')[0],
+//        focus : {z:0, rotationY: 0, scale: 1},
+//        holdLeft : { scale: 0.8},
+//        holdRight : {x:u+'px', z:'-100px', rotationY:'-15deg', scale: 0.8},
+//        holdTouch : {x: 0, y: '395px', z:'0', height: '100px', width: '300px', rotationY:'0deg', scale: 1}
+//      };
+//      
+//    },
+//    animDefaults: function(){ //Set homepage defaults
+//      var self = this;
+//      
+//      
+//      
+//      //Return to default on mouseleave
+//      self.feat.forEach(function(el){
+//        TweenMax.to(el.elem, 0, {clearProps:'width,height,y,rotationY'});
+//        var heading = el.elem.children[0].children[0];
+//        TweenMax.to(heading, 0, {clearProps:'y'}); 
+//        
+//      });
+//      TweenMax.to(self.feat[0].elem, 0, self.feat[0].holdLeft);
+//      TweenMax.set(self.feat[0].elem, {zIndex:21});
+//      TweenMax.to(self.feat[1].elem, 0, self.feat[1].holdLeft);
+//      TweenMax.set(self.feat[1].elem, {zIndex:23});
+//      TweenMax.to(self.feat[2].elem, 0, self.feat[2].focus);
+//      TweenMax.set(self.feat[2].elem, {zIndex:25});
+//      TweenMax.to(self.feat[3].elem, 0, self.feat[3].holdRight);
+//      TweenMax.set(self.feat[3].elem, {zIndex:23});
+//      TweenMax.to(self.feat[4].elem, 0, self.feat[4].holdRight);
+//      TweenMax.set(self.feat[4].elem, {zIndex:21});
+//      
+//      
+//    },
+//    animFrontPageScroll: function(){ //Set homepage defaults
+//      var self = this;
+//      //Return to default on mouseleave
+//      self.feat.forEach(function(el){
+//        TweenMax.to(el.elem, 0, {clearProps:'width,height'});
+//        var heading = el.elem.children[0].children[0];
+//        TweenMax.to(heading, 0, {clearProps:'y'});       
+//      });
+//      TweenMax.to(self.feat[0].elem, 0, {rotationZ: '-45deg', x: '-500px'});
+//      TweenMax.set(self.feat[0].elem, {zIndex:21});
+//      
+//      var sceneIn = new ScrollMagic.Scene({
+//          triggerElement: el,
+//          triggerHook: 'onEnter',
+//          reverse: true
+//        })
+//        .setTween(el, 0.3, {opacity: 1, scale: 1}) // trigger a TweenMax.to tween
+//        .addTo(controller); 
+//      
+//    },
+//    animListeners: function(){ // Add all listeners
+//      
+//      var self = this;
+//      
+//      // Move into focus on mouseenter
+//      self.feat[0].elem.addEventListener('mouseenter', function(e){
+//        var tl = new TimelineMax();
+//        tl.add( TweenMax.to(self.feat[0].elem, 0, self.feat[0].focus) );
+//        tl.add( TweenMax.set(self.feat[0].elem,{zIndex:25}) );
+//        tl.add( TweenMax.to(self.feat[1].elem, 0, self.feat[1].holdRight) );
+//        tl.add( TweenMax.set(self.feat[1].elem,{zIndex:24}) );
+//        tl.add( TweenMax.to(self.feat[2].elem, 0, self.feat[2].holdRight) );
+//        tl.add( TweenMax.set(self.feat[2].elem,{zIndex:23}) );
+//        tl.add( TweenMax.set(self.feat[3].elem,{zIndex:22}) );
+//        tl.play();
+//      });
+//      self.feat[1].elem.addEventListener('mouseenter', function(e){
+//        var tl = new TimelineMax();
+//        tl.add( TweenMax.to(self.feat[1].elem, 0, self.feat[1].focus) );
+//        tl.add( TweenMax.set(self.feat[1].elem,{zIndex:25}) );
+//        tl.add( TweenMax.to(self.feat[2].elem, 0, self.feat[2].holdRight) );
+//        tl.add( TweenMax.set(self.feat[2].elem,{zIndex:24}) );
+//        tl.play();
+//      });
+//      self.feat[3].elem.addEventListener('mouseenter', function(e){
+//        var tl = new TimelineMax();
+//        tl.add( TweenMax.to(self.feat[3].elem, 0, self.feat[3].focus) );
+//        tl.add( TweenMax.set(self.feat[3].elem,{zIndex:25}) );
+//        tl.add( TweenMax.to(self.feat[2].elem, 0, self.feat[2].holdLeft) );
+//        tl.add( TweenMax.set(self.feat[2].elem,{zIndex:24}) );
+//        tl.play();
+//      });
+//      self.feat[4].elem.addEventListener('mouseenter', function(e){
+//        var tl = new TimelineMax();
+//        tl.add( TweenMax.to(self.feat[4].elem, 0, self.feat[4].focus) );
+//        tl.add( TweenMax.set(self.feat[4].elem,{zIndex:25}) );
+//        tl.add( TweenMax.to(self.feat[3].elem, 0, self.feat[3].holdLeft) );
+//        tl.add( TweenMax.set(self.feat[3].elem,{zIndex:24}) );
+//        tl.add( TweenMax.to(self.feat[2].elem, 0, self.feat[2].holdLeft) );
+//        tl.add( TweenMax.set(self.feat[1].elem,{zIndex:22}) );
+//        tl.add( TweenMax.set(self.feat[2].elem,{zIndex:23}) );
+//        tl.add( TweenMax.set(self.feat[3].elem,{zIndex:24}) );
+//        tl.play();
+//      }); 
+// 
+//      // Return to default on mouseleave
+//      self.feat.forEach(function(el){
+//        el.elem.addEventListener('mouseleave', self.animDefaults);
+//      });
+//
+//      // Animations when clicked to load
+//      self.feat.forEach(function(el, i){
+//        el.elem.addEventListener('click', function(e){
+//          
+//          //exit if click came from other element
+//          if (el.elem !== e.target) return;
+//          
+//          //exit if feat[2] 
+//          if (i == 2) return;
+//          
+//          // Cancel mouseleave event while subroute is loaded
+//          e.target.removeEventListener('mouseleave', self.animDefaults);
+//          
+////          var tl = self.animFeatActive(e.target);
+////          tl.play();
+//          
+//        }, false);
+//      });
+//
+//    },
+//    animMobile: function(){
+//      var self = this;
+//                               
+//      var tl = new TimelineMax();
+//
+//      self.feat.forEach(function(el){
+//        // Clear Defaults
+//        TweenMax.to(el.elem, 0, {clearProps:'width,height,y'});
+//        var heading = el.elem.children[0].children[0];
+//        TweenMax.to(heading, 0, {clearProps:'y'}); 
+// 
+//        // Display for Touch
+//        tl.add(TweenMax.to(el.elem, 0, el.holdTouch));
+//        tl.add(TweenMax.to(heading, 0, {y: '-40px'}));
+//        
+//      });
+//      
+//      
+//      tl.play();
+//      console.log('Anim Touch');
+//    }
   },
   mounted : function(){
     this.$nextTick(function (){
@@ -391,25 +391,29 @@ var Home = Vue.extend({
  
         
         //Tween Max Animations.
-        function animInit(){
-          self.animCreate();
-          
-          if($(window).width() < 500 || Modernizr.touchevents){
-            self.animMobile();
-          }else{
-            self.animListeners();
-            self.animDefaults();
-          }
-        }
-        animInit();
+//        function animInit(){
+//          self.animCreate();
+//          
+//          if($(window).width() < 500 || Modernizr.touchevents){
+//            self.animMobile();
+//          }else{
+//            self.animListeners();
+//            self.animDefaults();
+//          }
+//        }
+//        animInit();
         
+        // Parallax.js Init
+        var parallaxScene = document.getElementById('mpreactive'),
+          parallaxObj = new Parallax(parallaxScene);
+
         
         // Reanimate on Resize
         var $window = $(window);
 
-        if(self.$route.params.name === 'home') {
-          $window.on('resize', animInit);
-        }
+//        if(self.$route.params.name === 'home') {
+//          $window.on('resize', animInit);
+//        }
         
         
         
@@ -442,13 +446,13 @@ var Home = Vue.extend({
                }
              },
              "color": {
-               "value": colors[random]
+               "value": '#ffffff',//colors[random]
              },
              "shape": {
                "type": "circle",
                "stroke": {
                  "width": 0,
-                 "color": "#000000"
+                 "color": "#000000" 
                },
                "polygon": {
                  "nb_sides": 5
@@ -482,7 +486,7 @@ var Home = Vue.extend({
              "line_linked": {
                "enable": true,
                "distance": 150,
-               "color": colors[random],
+               "color": '#ffffff', //colors[random],
                "opacity": 0.7,
                "width": 2
              },

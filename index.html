@@ -20,9 +20,14 @@
       <div id="particles"></div>
 
       <header class="header" v-bind:class="$route.name === 'music' || $route.name === 'gallery' || $route.name === 'laboratory' || $route.name === 'events' ? 'header--active' : ''">
+        <div class="header__site-info">
         <router-link to="/" class="header__title">
           METACIN
         </router-link>
+        <div class="header__subtitle">
+          Beyond Medicine &reg;
+        </div>
+        </div>
          <a class="header__menu-item">
            &#9776;
          </a>
@@ -41,6 +46,7 @@
       </header>
       
       
+<!--
       
       
       <div class="compass" v-bind:class="$route.name === 'music' || $route.name === 'gallery' || $route.name === 'laboratory' || $route.name === 'events' ? 'compass--active' : ''">
@@ -69,21 +75,24 @@
             <span class="feat__inner"><h2>LABORATORY</h2></span>
           </router-link>          
         </div>
-
-
       </div>
+-->
       
     
       
       <div class="router-contents" v-bind:class="$route.name === 'music' || $route.name === 'gallery' || $route.name === 'laboratory' || $route.name === 'events' ? 'subpage-active' : ''">
+<!--
         <div class="featured--spacer">
           
         </div>
+-->
+<!--
         <div class="mpscroll">
           <a class="mpscroll__inner">
              &#10151;
           </a>
         </div>  
+-->
         <router-view></router-view>
       </div>
       
@@ -102,26 +111,35 @@
    <template id="featuredTemplate">
      <div id="featuredAnchor">
        <div class="mploading" v-show="isLoading">
-           <div class="mploading__bouncer">
-             <div class="double-bounce1"></div>
-             <div class="double-bounce2"></div>
-           </div></div>
-       <div v-show="!isLoading">    
+         <div class="mploading__bouncer">
+           <div class="double-bounce1"></div>
+           <div class="double-bounce2"></div>
+         </div>
+       </div>
+       <div v-show="!isLoading" class="mpsnapcontainer">    
      
-
-        <!--     Intro Box-->
-        <div class="mpintro">
-          <div class="mpintro__text">
-  <!--          <h2 >METACIN</h2>-->
-           <br><br>
-            <p class="u-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
-          </div>
-        </div>
-
+        <!--Floating Box-->
+        <div class="mpsnapbox">
+         <a href="#featuredScrollAnchor" id="mpreactive" class="mpreactive">
+           <div class="layer" data-depth="0.20"><div class="mpreactive__inner"><img src="src/img/yeaman.png" alt="Michael Yeaman"></div></div>
+           <div class="layer" data-depth="0.50"><div class="mpreactive__inner"><h2 >METACIN</h2></div></div>
+           <div class="layer" data-depth="0.80"><div class="mpreactive__inner"><h3>Beyond Medicine&copy;</h3></div></div>
+         </a>
+       </div>
 
 
-        <div class="body-bg">
+
+
+    
           <!--     Featured Tune Box-->
+        <div id="featuredScrollAnchor" class="mpsnapbox body-bg">
+         <div class="mpsnapbox__inner">
+          <div class="mpintro">
+            <div class="mpintro__text">
+              <h2>Music Hall</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores libero, dolorem fuga ipsam aut, quia rerum, nihil quis vitae consectetur sunt ad est vel dolores ea vero autem fugiat temporibus.</p>
+            </div>
+          </div>
           <div class="mpbox">
             <div class="mpbox__text">
               <h4>Odyssey <small>Featured Tune</small></h4>
@@ -144,15 +162,11 @@
               </div>
             </div>
           </div>
-
-          <!--     Intro Box-->
-          <div class="mpintro">
-            <div class="mpintro__text">
-              <p class="u-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
-            </div>
           </div>
+        </div>
 
-          <!--     Featured Art Box-->
+        <!--     Featured Art Box-->
+        <div class="mpsnapbox">
           <div class="mpbox mpbox--reverse">
             <div class="mpbox__text">
               <h4>Anthem <small>Featured Art</small></h4>
@@ -171,13 +185,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <!--     Intro Box-->
-          <div class="mpintro">
-            <div class="mpintro__text">
-              <p class="u-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
             </div>
           </div>
         </div>
@@ -445,6 +452,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script>
     
     <script src="/vendor/gsap-then.browser.js"></script>
+    <script src="/vendor/parallax.min.js"></script>
+    <script src="/vendor/scrollsnap-polyfill.bundled.js"></script>
 <!--    <script src="/vendor/addIndicators.js"></script>-->
     
 
