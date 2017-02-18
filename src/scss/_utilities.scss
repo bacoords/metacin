@@ -2,8 +2,6 @@
 body{
 //  background: linear-gradient(to bottom right, #494949, #222);
   background: $body-bg;
-  top: 0;
-  margin-top: 8px;
   width:100%;
   font-family: 'Montserrat', sans-serif;
   font-weight:400;
@@ -19,7 +17,7 @@ html {     -webkit-font-smoothing: antialiased; }
   }
 }
 
-body.scroll-snap {
+.scroll-snap {
   scroll-snap-type: mandatory;
   scroll-snap-points-y: repeat(100vh);
   scroll-behaviour: smooth;
@@ -34,7 +32,7 @@ body.scroll-snap {
 }
 
 
-.router-content{
+.mprouter{
   min-height:100vh;
 }
 .featured--spacer{
@@ -56,7 +54,6 @@ body.scroll-snap {
   left:0;
   width:100%;
   height:200%;  
-  z-index: 1;
 }
 
 .main-entry{

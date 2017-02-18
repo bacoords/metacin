@@ -2,19 +2,12 @@
 //Musicology
 .mpintro{
   &__text{
-//    max-width: 600px;
     max-width:100%;
     margin: 0 auto;
-//    padding:0.5rem;
-    h2, p{
-      color:$white;
-//      text-align: center;
-    }
     h2 {
-//      opacity: 0.1;
       font-size:3rem;
       margin-bottom: 1rem;
-      
+      color:$white;
       max-width:600px;
       display: block;
       margin:0 auto;
@@ -23,22 +16,36 @@
       }
       @media(min-width:$bp-lg){
         font-size:4rem;
-        
-//        transform: translateX(-300px);
       }
     }
     p{
       text-indent: 0.5rem;
       max-width:600px;
       display: block;
+      color:$white;
       margin:0 auto;
       line-height: 1.4;
       font-size:1.2rem;
       margin-bottom: 1rem;
       font-family:$font-body;
       @media(min-width: $bp-lg){
-        
-//        transform: translateX(-300px);
+      }
+    }
+    
+    a{
+      display: inline;
+      padding:0.7rem 1rem 0.7rem 1rem;
+      color:$white;
+      text-decoration: none;
+      border-radius: 3px;
+      margin:1rem auto;
+      transition: all 300ms ease;
+      letter-spacing: 1px;
+      background:$mpblue;
+      text-align: center; 
+      &:hover{
+        background:$mpblue-dk;
+        color:$white;
       }
     }
   }

@@ -4,20 +4,24 @@ var controller = new ScrollMagic.Controller();
 
 
 // Creates a Smooth Scroll
-$(function() {
-  $('a[href*="#"]:not([href="#"])').click(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-      if (target.length) {
-        $('html, body').animate({
-          scrollTop: target.offset().top
-        }, 1000);
-        return false;
+function smoothScrollInit(){
+  $(function() {
+    $('a[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000);
+          return false;
+        }
       }
-    }
+    });
   });
-});
+}
+
+
 
 
 
@@ -156,190 +160,11 @@ var Home = Vue.extend({
       this.playing = !this.playing;
       return;
     },
-//    animCreate : function (){ //Create original Elements
-//      var self = this;
-//      //Base unit for sizing
-//      
-//      
-//      var u = (window.innerWidth * 0.33), //Full Unit
-//        uA = u * 0.85,
-//        uB = u * 0.7,
-//        uC = u * 0.55,
-//        uD = u * 2;
-//        
-//      self.feat[0] = {
-//        elem: document.getElementsByClassName('feat-events')[0],
-//        focus : {z:0, rotationY: 0, scale: 1},
-//        holdLeft : {x:'-'+u+'px', z:'-100px', rotationY:'15deg', scale: 0.8},
-//        holdRight : { scale: 0.8},
-//        holdTouch : {x: 0, y: '80px', z:'0', height: '100px', width: '300px', rotationY:'0deg', scale: 1}
-//      };
-//      self.feat[1] = { 
-//        elem: document.getElementsByClassName('feat-laboratory')[0],
-//        focus : {x:'-'+uB+'px', z:0, rotationY: 0, scale: 1},
-//        holdLeft : {x:'-'+uA+'px', z:'-75px', rotationY:'15deg', scale: 0.8},
-//        holdRight : {x:''+uC+'px', z:'-10px', rotationY:'-15deg', scale: 0.8},
-//        holdTouch : {x: 0, y: '185px', z:'0', height: '100px', width: '300px', rotationY:'0deg', scale: 1}
-//      };
-//      self.feat[2] = {
-//        elem: document.getElementsByClassName('feat-featured')[0],
-//        focus : {x: 0, z: 0,  z:0, rotationY: 0, scale: 1},
-//        holdLeft : {x:'-'+uB+'px', z:'-30px', rotationY:'15deg', scale: 0.8},
-//        holdRight : {x:''+uB+'px', z:'-30px', rotationY:'-15deg', scale: 0.8},
-//        holdTouch : {x: 0, y: '-105px', z:'0', height: '240px', width: '300px', rotationY:'0deg', scale: 1}
-//      };
-//      self.feat[3] = {
-//        elem: document.getElementsByClassName('feat-music')[0],
-//        focus : {x:''+uB+'px',z:0, rotationY: 0, scale: 1},
-//        holdLeft : {x:'-'+uC+'px', z:'-10px', rotationY:'15deg', scale: 0.8},
-//        holdRight : { x:uA+'px', z:'-75px', rotationY:'-15deg', scale: 0.8},
-//        holdTouch : {x: 0, y: '290px', z:'0', height: '100px', width: '300px', rotationY:'0deg', scale: 1}
-//      };
-//      self.feat[4] = {
-//        elem: document.getElementsByClassName('feat-gallery')[0],
-//        focus : {z:0, rotationY: 0, scale: 1},
-//        holdLeft : { scale: 0.8},
-//        holdRight : {x:u+'px', z:'-100px', rotationY:'-15deg', scale: 0.8},
-//        holdTouch : {x: 0, y: '395px', z:'0', height: '100px', width: '300px', rotationY:'0deg', scale: 1}
-//      };
-//      
-//    },
-//    animDefaults: function(){ //Set homepage defaults
-//      var self = this;
-//      
-//      
-//      
-//      //Return to default on mouseleave
-//      self.feat.forEach(function(el){
-//        TweenMax.to(el.elem, 0, {clearProps:'width,height,y,rotationY'});
-//        var heading = el.elem.children[0].children[0];
-//        TweenMax.to(heading, 0, {clearProps:'y'}); 
-//        
-//      });
-//      TweenMax.to(self.feat[0].elem, 0, self.feat[0].holdLeft);
-//      TweenMax.set(self.feat[0].elem, {zIndex:21});
-//      TweenMax.to(self.feat[1].elem, 0, self.feat[1].holdLeft);
-//      TweenMax.set(self.feat[1].elem, {zIndex:23});
-//      TweenMax.to(self.feat[2].elem, 0, self.feat[2].focus);
-//      TweenMax.set(self.feat[2].elem, {zIndex:25});
-//      TweenMax.to(self.feat[3].elem, 0, self.feat[3].holdRight);
-//      TweenMax.set(self.feat[3].elem, {zIndex:23});
-//      TweenMax.to(self.feat[4].elem, 0, self.feat[4].holdRight);
-//      TweenMax.set(self.feat[4].elem, {zIndex:21});
-//      
-//      
-//    },
-//    animFrontPageScroll: function(){ //Set homepage defaults
-//      var self = this;
-//      //Return to default on mouseleave
-//      self.feat.forEach(function(el){
-//        TweenMax.to(el.elem, 0, {clearProps:'width,height'});
-//        var heading = el.elem.children[0].children[0];
-//        TweenMax.to(heading, 0, {clearProps:'y'});       
-//      });
-//      TweenMax.to(self.feat[0].elem, 0, {rotationZ: '-45deg', x: '-500px'});
-//      TweenMax.set(self.feat[0].elem, {zIndex:21});
-//      
-//      var sceneIn = new ScrollMagic.Scene({
-//          triggerElement: el,
-//          triggerHook: 'onEnter',
-//          reverse: true
-//        })
-//        .setTween(el, 0.3, {opacity: 1, scale: 1}) // trigger a TweenMax.to tween
-//        .addTo(controller); 
-//      
-//    },
-//    animListeners: function(){ // Add all listeners
-//      
-//      var self = this;
-//      
-//      // Move into focus on mouseenter
-//      self.feat[0].elem.addEventListener('mouseenter', function(e){
-//        var tl = new TimelineMax();
-//        tl.add( TweenMax.to(self.feat[0].elem, 0, self.feat[0].focus) );
-//        tl.add( TweenMax.set(self.feat[0].elem,{zIndex:25}) );
-//        tl.add( TweenMax.to(self.feat[1].elem, 0, self.feat[1].holdRight) );
-//        tl.add( TweenMax.set(self.feat[1].elem,{zIndex:24}) );
-//        tl.add( TweenMax.to(self.feat[2].elem, 0, self.feat[2].holdRight) );
-//        tl.add( TweenMax.set(self.feat[2].elem,{zIndex:23}) );
-//        tl.add( TweenMax.set(self.feat[3].elem,{zIndex:22}) );
-//        tl.play();
-//      });
-//      self.feat[1].elem.addEventListener('mouseenter', function(e){
-//        var tl = new TimelineMax();
-//        tl.add( TweenMax.to(self.feat[1].elem, 0, self.feat[1].focus) );
-//        tl.add( TweenMax.set(self.feat[1].elem,{zIndex:25}) );
-//        tl.add( TweenMax.to(self.feat[2].elem, 0, self.feat[2].holdRight) );
-//        tl.add( TweenMax.set(self.feat[2].elem,{zIndex:24}) );
-//        tl.play();
-//      });
-//      self.feat[3].elem.addEventListener('mouseenter', function(e){
-//        var tl = new TimelineMax();
-//        tl.add( TweenMax.to(self.feat[3].elem, 0, self.feat[3].focus) );
-//        tl.add( TweenMax.set(self.feat[3].elem,{zIndex:25}) );
-//        tl.add( TweenMax.to(self.feat[2].elem, 0, self.feat[2].holdLeft) );
-//        tl.add( TweenMax.set(self.feat[2].elem,{zIndex:24}) );
-//        tl.play();
-//      });
-//      self.feat[4].elem.addEventListener('mouseenter', function(e){
-//        var tl = new TimelineMax();
-//        tl.add( TweenMax.to(self.feat[4].elem, 0, self.feat[4].focus) );
-//        tl.add( TweenMax.set(self.feat[4].elem,{zIndex:25}) );
-//        tl.add( TweenMax.to(self.feat[3].elem, 0, self.feat[3].holdLeft) );
-//        tl.add( TweenMax.set(self.feat[3].elem,{zIndex:24}) );
-//        tl.add( TweenMax.to(self.feat[2].elem, 0, self.feat[2].holdLeft) );
-//        tl.add( TweenMax.set(self.feat[1].elem,{zIndex:22}) );
-//        tl.add( TweenMax.set(self.feat[2].elem,{zIndex:23}) );
-//        tl.add( TweenMax.set(self.feat[3].elem,{zIndex:24}) );
-//        tl.play();
-//      }); 
-// 
-//      // Return to default on mouseleave
-//      self.feat.forEach(function(el){
-//        el.elem.addEventListener('mouseleave', self.animDefaults);
-//      });
-//
-//      // Animations when clicked to load
-//      self.feat.forEach(function(el, i){
-//        el.elem.addEventListener('click', function(e){
-//          
-//          //exit if click came from other element
-//          if (el.elem !== e.target) return;
-//          
-//          //exit if feat[2] 
-//          if (i == 2) return;
-//          
-//          // Cancel mouseleave event while subroute is loaded
-//          e.target.removeEventListener('mouseleave', self.animDefaults);
-//          
-////          var tl = self.animFeatActive(e.target);
-////          tl.play();
-//          
-//        }, false);
-//      });
-//
-//    },
-//    animMobile: function(){
-//      var self = this;
-//                               
-//      var tl = new TimelineMax();
-//
-//      self.feat.forEach(function(el){
-//        // Clear Defaults
-//        TweenMax.to(el.elem, 0, {clearProps:'width,height,y'});
-//        var heading = el.elem.children[0].children[0];
-//        TweenMax.to(heading, 0, {clearProps:'y'}); 
-// 
-//        // Display for Touch
-//        tl.add(TweenMax.to(el.elem, 0, el.holdTouch));
-//        tl.add(TweenMax.to(heading, 0, {y: '-40px'}));
-//        
-//      });
-//      
-//      
-//      tl.play();
-//      console.log('Anim Touch');
-//    }
+    isLoading : function() { // return store loading
+      return this.$store.state.loading; 
+    }
+  },
+  computed : {
   },
   mounted : function(){
     this.$nextTick(function (){
@@ -373,7 +198,7 @@ var Home = Vue.extend({
           } else {
             $('body').removeClass('show-nav');
             $('body').addClass('hide-nav');
-            $('.header__menu-item').html('&#9776;');
+            $('.header__menu-item').html('M');
           } 
           self.menu = !self.menu;
         });
@@ -381,7 +206,7 @@ var Home = Vue.extend({
         $('.header-nav__a').click(function(){    
           $('body').removeClass('show-nav');
           $('body').addClass('hide-nav');
-          $('.header__menu-item').html('&#9776;');
+          $('.header__menu-item').html('M');
           self.menu = !self.menu;
         });
 
@@ -389,32 +214,17 @@ var Home = Vue.extend({
         $('html, body').scrollTop(0);   
 
  
-        
-        //Tween Max Animations.
-//        function animInit(){
-//          self.animCreate();
-//          
-//          if($(window).width() < 500 || Modernizr.touchevents){
-//            self.animMobile();
-//          }else{
-//            self.animListeners();
-//            self.animDefaults();
-//          }
-//        }
-//        animInit();
+  
         
         // Parallax.js Init
-        var parallaxScene = document.getElementById('mpreactive'),
-          parallaxObj = new Parallax(parallaxScene);
-
+//        var parallaxScene = document.getElementById('mpreactive'),
+//          parallaxObj = new Parallax(parallaxScene);
         
         // Reanimate on Resize
         var $window = $(window);
 
-//        if(self.$route.params.name === 'home') {
-//          $window.on('resize', animInit);
-//        }
-        
+        // Initialize Smooth Scroll Watcher
+        smoothScrollInit();
         
         
         
@@ -583,7 +393,50 @@ var Music = Vue.extend({
           title : 'Odyssey',
           slug : 'odyssey',
           image : '/dist/img/album-4.png',
-          content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
+          content : '<p>Every life is an odyssey – a journey of pathways mirroring will and fate.  Each odyssey is a story of passages:  leaving home – facing challenges – finding courage – being changed – returning home.  In time, each tale is told through setback and loss – chance and victory.  Meaning emerges from quiet rhythms of each moment – and great echoes of each season – in the odyssey of every life.  Embrace your odyssey.</p>',
+          tracks : [
+            {
+              index : '1',
+              title: 'Odyssey',
+              time: '5:29'
+            },{
+              index : '2',
+              title: 'Wayfarer',
+              time: '5:32'
+            },{
+              index : '3',
+              title: 'Conquest',
+              time: '5:31'
+            },{
+              index : '4',
+              title: 'Sirens',
+              time: '7:48'
+            },{
+              index : '5',
+              title: 'Nightfall',
+              time: '5:57'
+            },{
+              index : '6',
+              title: 'Underworld',
+              time: '5:28'
+            },{
+              index : '7',
+              title: 'Helios',
+              time: '6:01'
+            },{
+              index : '8',
+              title: 'Windsong',
+              time: '5:44'
+            },{
+              index : '9',
+              title: 'Homeland',
+              time: '5:42'
+            },{
+              index : '10',
+              title: 'Invictus',
+              time: '4:26'
+            }
+          ] 
         },
         {
           title : 'Nuvo',
@@ -676,54 +529,53 @@ var Music = Vue.extend({
   mounted : function(){
     this.$nextTick(function(){
    
+      
+      var self = this;
+      
      // Update title
       setDocTitle('Music Hall');
       
-      
-      // Get Animation Header
-      var tl = animFeatActive('.feat-music');
-      var self = this;
-      
-      // Run Animation
-      tl.then(function (timeline) {
-        
-        //After animation start loading
-        store.commit('loadingOn');
-        
-        
-        
-        // Create array of images to load
-        var a = ['/dist/img/icon-amazon.png','/dist/img/icon-spotify.png','/dist/img/icon-itunes.png']; 
-        self.posts.forEach(function(p){
-          a.push(p.image);
-        });
 
-        self.preload(a, function(){
+      //After animation start loading
+      store.commit('loadingOn');
 
-          
-          
-          // Remove Loader
-          store.commit('loadingOff');
 
-          // Add hover effect to gallery
-          $('.mpgal__item img').hover(function(){
-            $('.mpgal').addClass('mpgal--hovered');
-          }, function(){
-            $('.mpgal').removeClass('mpgal--hovered');
-          });
 
-          //SCROLLTOP on load
-          $('html, body').scrollTop(0);
-
-          // Show featureds on animation
-          mpFadeIn();
-          var $window = $(window);
-          $window.on('scroll resize', mpFadeIn);
-          $window.trigger('scroll');
-
-        });
+      // Create array of images to load
+      var a = ['/dist/img/icon-amazon.png','/dist/img/icon-spotify.png','/dist/img/icon-itunes.png']; 
+      self.posts.forEach(function(p){
+        a.push(p.image);
       });
-      tl.play();
+
+      self.preload(a, function(){
+
+
+
+        // Remove Loader
+        store.commit('loadingOff');
+
+
+        // Add hover effect to gallery
+        $('.mpgal__item img').hover(function(){
+          $('.mpgal').addClass('mpgal--hovered');
+        }, function(){
+          $('.mpgal').removeClass('mpgal--hovered');
+        });
+
+        //SCROLLTOP on load
+        $('html, body').scrollTop(0);
+
+        
+        // Show featureds on animation
+        mpFadeIn();
+        var $window = $(window);
+        $window.on('scroll resize', mpFadeIn);
+        $window.trigger('scroll');
+
+
+        // Initialize Smooth Scroll Watcher
+        smoothScrollInit();
+      });
 
       
       
@@ -799,56 +651,52 @@ var Gallery = Vue.extend({
    
      // Update title
       setDocTitle('Eye Gallery');
-
- 
-      // Get Animation Header
-      var tl = animFeatActive('.feat-gallery');
+  
+      
       var self = this;
       
-      // Run Animation
-      tl.then(function (timeline) {
-        //After animation start loading
-        store.commit('loadingOn');
-        
-        // Create array of images to load
-        var a = ['/dist/img/icon-amazon.png','/dist/img/icon-spotify.png','/dist/img/icon-itunes.png']; 
-        self.posts.forEach(function(p){
-          a.push(p.image);
-        });
 
-        self.preload(a, function(){
-          
-          
-          // Turn off loading
-          store.commit('loadingOff');
+      //After animation start loading
+      store.commit('loadingOn');
 
-          
-          
-          // Add hover bindings to gallery
-          $('.mpgal__item img').hover(function(){
-            $('.mpgal').addClass('mpgal--hovered');
-          }, function(){
-            $('.mpgal').removeClass('mpgal--hovered');
-          });
 
-          
-          
-          //SCROLLTOP
-          $('html, body').scrollTop(0);
 
-          
-          
-          // Show featureds on animation
-          mpFadeIn();
-          var $window = $(window);
-          $window.on('scroll resize', mpFadeIn);
-          $window.trigger('scroll');
-
-        });
+      // Create array of images to load
+      var a = ['/dist/img/icon-amazon.png','/dist/img/icon-spotify.png','/dist/img/icon-itunes.png']; 
+      self.posts.forEach(function(p){
+        a.push(p.image);
       });
-      tl.play();
 
-      
+      self.preload(a, function(){
+
+
+
+        // Remove Loader
+        store.commit('loadingOff');
+
+
+        // Add hover effect to gallery
+        $('.mpgal__item img').hover(function(){
+          $('.mpgal').addClass('mpgal--hovered');
+        }, function(){
+          $('.mpgal').removeClass('mpgal--hovered');
+        });
+
+        //SCROLLTOP on load
+        $('html, body').scrollTop(0);
+
+        
+        // Show featureds on animation
+        mpFadeIn();
+        var $window = $(window);
+        $window.on('scroll resize', mpFadeIn);
+        $window.trigger('scroll');
+
+
+        // Initialize Smooth Scroll Watcher
+        smoothScrollInit();
+      });
+
 
     });
   }
@@ -951,7 +799,7 @@ var Album = Vue.extend({
         return post.slug == self.$route.params.slug;
       });
       console.log(p[0]);
-      this.post = Object.assign({}, { content : p[0].content, image : p[0].image, slug : p[0].slug, title : p[0].title});
+      this.post = Object.assign({}, { content : p[0].content, image : p[0].image, slug : p[0].slug, title : p[0].title, tracks : p[0].tracks});
 
    
      // Update title
@@ -1015,55 +863,80 @@ var Art = Vue.extend({
     this.$nextTick(function(){
       
       var self = this;
+      
       var p = this.$parent.posts.filter(function(post){
         return post.slug == self.$route.params.slug;
       });
+      
       this.post = Object.assign({}, { content : p[0].content, image : p[0].image, slug : p[0].slug, title : p[0].title });
 
    
      // Update title
       setDocTitle(this.post.title);
+      
+
+
 
       // Display Properties
       $('.mpmodal').addClass('mpmodal--active');
       document.body.classList.add('no-scroll');
 
-      
-      
+
+
       // Back on Escape
       $(document).keyup(function(e) {
         if (e.keyCode == 27) { // escape key maps to keycode `27`
           router.push({path : '/gallery'});
         }
       });
-     
-      
-      
+
+
+
       // Back on exit click
       $('.mpmodal__exit').click(function(){
         self.closeAlbum();
       });
       
-      
-      // Set image width
-      var imgWidth = $('.mpalbum__image > img').width();
-      console.log(imgWidth);
-      $('.mpalbum__progress').width(imgWidth + 'px');
-      
-      
-      // Track Audio Position
-      $('.mpalbum__player').bind('play', function(){
-        $('.mpalbum__progress-bar').width('0%');
-      });
- 
-      $('.mpalbum__player').bind('timeupdate', function(){
-        console.log (this.currentTime);
-        console.log (this.duration);
-        console.log ((this.currentTime / this.duration));
+      function initMPAlbum(){
         
-        $('.mpalbum__progress-bar').width(((this.currentTime / this.duration) * 100) + '%');
-      });
+        // Set image height
+        var imgHeight = $('.mpalbum__image > img').height() + 15;
+        console.log('height', imgHeight);
+        $('.mpalbum__progress').height(imgHeight + 'px');
+        $('.mpalbum__progress-bar').height(imgHeight + 'px');
+
+        // Set image width
+        var imgWidth = $('.mpalbum__image > img').width();
+        console.log('width', imgWidth);
+        $('.mpalbum__progress').width(imgWidth + 'px');
+
+
+        // Track Audio Position
+        $('.mpalbum__player').bind('play', function(){
+          $('.mpalbum__progress-bar').width('0%');
+        });
+
+        $('.mpalbum__player').bind('timeupdate', function(){
+          console.log (this.currentTime);
+          console.log (this.duration);
+          console.log ((this.currentTime / this.duration));
+
+          $('.mpalbum__progress-bar').width(((this.currentTime / this.duration) * 100) + '%');
+        });
+        
+      }
+
+      var checkExist = setInterval(function() {
+         if ($('.mpalbum__image > img').width() > 0) {
+            initMPAlbum();
+            clearInterval(checkExist);
+         }
+      }, 100); // check every 100ms
+
     });
+  },
+  created: function() {
+
   }
 });
 

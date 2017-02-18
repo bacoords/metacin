@@ -1,13 +1,22 @@
 
 
 // Flip Card Media Object
-$mpcard-sm:250px;
-$mpcard-lg:400px;
+$mpcard-sm:150px;
+$mpcard-lg:300px;
+
+.mpbox__mpcard{
+  flex-basis: $mpcard-sm;
+  @media(min-width: $bp-md){
+    flex-basis: $mpcard-lg;
+  }
+}
 
 .mpcard{
   width: $mpcard-sm;
   height: $mpcard-sm;
   perspective: 1000px;
+  
+
   &__inner{
     width: $mpcard-sm;
     height: $mpcard-sm;
@@ -56,9 +65,9 @@ $mpcard-lg:400px;
       width: $mpcard-sm;
       height: $mpcard-sm;
       display:flex;
+      flex-direction: row;
       justify-content: center;
       align-items: center;
-      font-size: 8rem;
       @media(min-width:$bp-md){
         width:$mpcard-lg;
         height:$mpcard-lg;
@@ -68,7 +77,7 @@ $mpcard-lg:400px;
       transition: all 300ms ease;
       cursor: pointer;
       color:$white;
-
+      font-size: 8rem;
       &:hover {
         color:$primary;
 
@@ -96,6 +105,26 @@ $mpcard-lg:400px;
     }
     .mpcard__back{
       background: url(../img/gallery-8.png) no-repeat center;
+      background-size: cover;
+    }
+  }
+  &--laboratory{
+    .mpcard__front{
+      background: url(../img/neurons.jpg) no-repeat center;
+      background-size: cover;
+    }
+    .mpcard__back{
+      background: url(../img/neurons.jpg) no-repeat center;
+      background-size: cover;
+    }
+  }
+  &--events{
+    .mpcard__front{
+      background: url(../img/pexels-2.jpg) no-repeat center;
+      background-size: cover;
+    }
+    .mpcard__back{
+      background: url(../img/pexels-2.jpg) no-repeat center;
       background-size: cover;
     }
   }

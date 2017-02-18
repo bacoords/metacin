@@ -1,0 +1,115 @@
+.mpsnapcontainer{
+  scroll-snap-type: mandatory;
+  scroll-snap-points-y: repeat(100vh);
+  scroll-behaviour: smooth;
+} 
+
+.mpsnapbox{
+  height: calc(100vh - 2rem);
+  position: relative;
+  padding: 1rem 2rem;
+  &__inner{
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 2rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba($primary, 0.7);
+    border-radius: 3px;
+    &::after {
+      content: "";    
+      opacity: 0.3;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: -1;   
+    }
+  }
+  
+  &:nth-of-type(even){
+    .mpsnapbox__inner{
+      
+    }
+  }
+  
+  &:first-of-type{
+    height: calc(100vh - 2rem - 45px);
+    margin-top:calc(45px + 2rem);
+    .mpsnapbox__inner{
+      
+      height: calc(100vh - 4rem - 45px);
+    }
+  }
+  &--music{
+    .mpsnapbox__inner::after{
+      background: url(../../src/img/pexels-1.jpg) no-repeat center;
+      background-size: cover;
+    }
+    .mpbox__text > a {
+      background: $music-color;      
+    }
+    .mpintro__text > a {
+      background: $music-color;      
+    }
+  }
+  &--laboratory{
+    .mpsnapbox__inner::after{
+      background: url(../../src/img/neurons.jpg) no-repeat center;
+      background-size: cover;
+    }
+    .mpbox__text > a {
+      background: $laboratory-color;      
+    }
+    .mpintro__text > a {
+      background: $laboratory-color;      
+    }
+  }
+  &--gallery{
+    .mpsnapbox__inner::after{
+      background: url(../../src/img/gallery-8.png) no-repeat center;
+      background-size: cover;
+    }
+    .mpbox__text > a {
+      background: $gallery-color;      
+    }
+    .mpintro__text > a {
+      background: $gallery-color;      
+    }
+  }
+  &--events{
+    .mpsnapbox__inner::after{
+      background: url(../../src/img/pexels-2.jpg) no-repeat center;
+      background-size: cover;
+    }
+    .mpbox__text > a {
+      background: $events-color;      
+    }
+    .mpintro__text > a {
+      background: $events-color;      
+    }
+  }
+}
+
+
+
+// Update for router
+.mprouter.mprouter--sub{
+  .mpsnapbox--mpreactive{
+    display:none;
+  }
+  .mpsnapbox--sub{
+    display: none;
+//    .mpsnapbox__inner{
+//      height: 90px;
+//    }
+//    .mpbox__mpcard{
+//      display: none;
+//    }
+//    .mpbox__text{
+//      display: none;
+//    }
+  }
+}

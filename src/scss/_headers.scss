@@ -2,17 +2,19 @@
 
 
 .header{
-  position:fixed;
+  position:absolute;
   top:0;
   left:0;
   width:100%;
-  height:75px;
+  height:45px;
   z-index:25;
   display:flex;
   align-items:center;
   justify-content:space-between;
   transition:opacity 1s ease;
-//  background: $primary-dk;
+  background: rgba($white, 0.8);// $primary-dk;
+  padding-top:0.5rem;
+  padding-bottom:0.5rem;
   &__site-info{
     padding:0.5rem 0.5rem 0.5rem 1rem;
     flex-grow: 0;
@@ -21,7 +23,7 @@
   }
   &__title{
     font-size:2.5rem;
-    color:rgba(256,256,256,1);
+    color:$primary-dk;
     font-weight:700;
     text-decoration:none;
     letter-spacing: 2px;
@@ -29,24 +31,30 @@
   }
   &__subtitle{
     font-size:1rem;
-    color:rgba(256,256,256,1);
+    color:$primary-dk;
     font-weight:400;
     text-decoration:none;
     letter-spacing: 2px;
     text-align: center;
-    
+    display: none;
   }
   &--active{
+    .header__site-info{
+      opacity: 1;
+    }
+    
     .header__title, .header__subtitle{
-      font-size:1.5rem;
+//      font-size:1.5rem;
     }
   }
   &__menu-item{
     position: relative;
-    font-size:1.8rem;
+    font-size:1.4rem;
     font-weight:700;
-    color:$white;
-    padding:1rem 0rem;
+    color:$primary-dk;
+//    background: $white;
+//    border-radius: 100px;
+    padding:0.6rem 0.8rem;
     margin-right:1rem;
     border-bottom:5px solid transparent;
     z-index:41;
@@ -54,8 +62,14 @@
     text-decoration:none;
     letter-spacing: 2px;
     cursor: pointer;
+//    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
     @media(min-width:700px){
       display:block;
+    }
+    &:hover{
+      
+//      background:rgba($primary-dk, 0.2);
+      color: $primary-dk;
     }
   }
   &--hovered{
@@ -125,6 +139,10 @@ body.show-nav{
   }
   .mpscroll{
     display:none;
+  }
+  .header .header__menu-item{
+     background:$white;
+    color: $body-bg;
   }
 }
 
