@@ -392,13 +392,13 @@ var Music = Vue.extend({
         {
           title : 'Odyssey',
           slug : 'odyssey',
-          image : '/dist/img/album-4.png',
+          image : '/dist/img/odysse.final.jpg',
           content : '<p>Every life is an odyssey – a journey of pathways mirroring will and fate.  Each odyssey is a story of passages:  leaving home – facing challenges – finding courage – being changed – returning home.  In time, each tale is told through setback and loss – chance and victory.  Meaning emerges from quiet rhythms of each moment – and great echoes of each season – in the odyssey of every life.  Embrace your odyssey.</p>',
           tracks : [
             {
               index : '1',
               title: 'Odyssey',
-              time: '5:29'
+              time: '5:29' 
             },{
               index : '2',
               title: 'Wayfarer',

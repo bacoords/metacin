@@ -15,11 +15,19 @@
   background: rgba($white, 0.8);// $primary-dk;
   padding-top:0.5rem;
   padding-bottom:0.5rem;
+  @media(min-width: $bp-lg){
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 60px;
+  }
   &__site-info{
     padding:0.5rem 0.5rem 0.5rem 1rem;
     flex-grow: 0;
     z-index:50;
     opacity: 0;
+    @media(min-width: $bp-lg){
+      opacity: 1;
+    }
   }
   &__title{
     font-size:2.5rem;
@@ -42,7 +50,6 @@
     .header__site-info{
       opacity: 1;
     }
-    
     .header__title, .header__subtitle{
 //      font-size:1.5rem;
     }
@@ -74,6 +81,11 @@
   }
   &--hovered{
     opacity:0.1;
+  }
+  &__mobile-link{
+    @media(min-width: $bp-lg){
+      display: none;
+    }
   }
   nav.header-nav{
     position: fixed;
@@ -124,6 +136,44 @@
         }
         &:nth-of-type(5){
           transform: rotateZ(-10deg);
+        }
+      }
+    }
+  }
+  @media(min-width: $bp-lg){
+    nav.header-nav{
+      position: static;
+      transform: none !important;
+      width: 70%;
+      max-width: 800px;
+      top: auto;
+      left: auto;
+      background: none;
+      .header-nav__wrapper{
+        flex-direction: row;
+        a {
+          font-size: 1rem;
+          transform: none !important;
+          text-align: center;
+          color: $primary-dk;
+          text-transform: uppercase;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: row;
+          span{
+            margin: 0;
+            transform: none !important;
+          }
+          &.header-nav__a-active{
+            background: $primary;
+//            span{ transform: translateY(5px); }
+          }
+          &:hover{
+            background: $primary;
+//            span{ transform: translateY(5px); }
+          }
         }
       }
     }

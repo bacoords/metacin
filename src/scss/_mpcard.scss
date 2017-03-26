@@ -2,7 +2,7 @@
 
 // Flip Card Media Object
 $mpcard-sm:150px;
-$mpcard-lg:300px;
+$mpcard-lg:400px;
 
 .mpbox__mpcard{
   flex-basis: $mpcard-sm;
@@ -89,12 +89,12 @@ $mpcard-lg:300px;
     height:$mpcard-lg;
   }
   &--music{
-    .mpcard__front{
-      background: url(../img/featured.png) no-repeat center;
+    .mpcard__front{ 
+      background: url(../img/odysse.final.jpg) no-repeat center;
       background-size: cover;
     }
     .mpcard__back{
-      background: url(../img/featured.png) no-repeat center;
+      background: url(../img/odysse.final.jpg) no-repeat center;
       background-size: cover;
     }
   }

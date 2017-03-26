@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="/dist/css/main.css?v=0.0.3.0">
+    <link rel="stylesheet" href="/dist/css/main.css?v=0.0.3.1">
   </head>
   <body>
     <!--[if lt IE 8]>
@@ -21,24 +21,24 @@
 
       <header class="header" v-bind:class="$route.name === 'music' || $route.name === 'gallery' || $route.name === 'laboratory' || $route.name === 'events' ? 'header--active' : ''">
         <div class="header__site-info">
-        <router-link to="/" class="header__title">
-          METACIN
-        </router-link>
-        <div class="header__subtitle">
-          Beyond Medicine &reg;
+          <router-link to="/" class="header__title">
+            METACIN
+          </router-link>
+          <div class="header__subtitle">
+            Beyond Medicine &reg;
+          </div>
         </div>
-        </div>
-         <a class="header__menu-item">
+         <a class="header__menu-item header__mobile-link">
            M
          </a>
          
          <nav class="header-nav">
            <div class="header-nav__wrapper">
-             <router-link class="header-nav__a" to="/"><span>Home</span></router-link>
-             <router-link class="header-nav__a" to="/music"><span>Music Hall</span></router-link>
-             <router-link class="header-nav__a" to="/gallery"><span>Eye Gallery</span></router-link>
-             <router-link class="header-nav__a" to="/laboratory"><span>Laboratory</span></router-link>
-             <router-link class="header-nav__a" to="/events"><span>Events</span></router-link>
+             <router-link class="header-nav__a" active-class="header-nav__a-home-active" to="/"><span>Home</span></router-link>
+             <router-link class="header-nav__a" active-class="header-nav__a-active" to="/music"><span>Music Hall</span></router-link>
+             <router-link class="header-nav__a" active-class="header-nav__a-active" to="/gallery"><span>Eye Gallery</span></router-link>
+             <router-link class="header-nav__a" active-class="header-nav__a-active" to="/laboratory"><span>Laboratory</span></router-link>
+             <router-link class="header-nav__a" active-class="header-nav__a-active" to="/events"><span>Events</span></router-link>
            </div>
          </nav>
          
@@ -101,7 +101,7 @@
 -->
         <div class="mpsnapbox mpsnapbox--mpreactive">
          <a href="#featuredScrollAnchor" class="mpreactive">
-           <div class="mpreactive__left"><img src="dist/img/yeaman-headshot-new.jpg" alt="Michael Yeaman"></div>
+           <div class="mpreactive__left"><img src="dist/img/yeaman-revised.jpg" alt="Michael Yeaman"></div>
            <div class="mpreactive__right"><h2>METACIN</h2><h3>Beyond Medicine&copy;</h3></div>
          </a>
        </div>
@@ -340,15 +340,17 @@
                 <div class="mpalbum__footer">
 
                   <div class="mpalbum__tracks">
-                    <h4>Track Listing</h4>
-                    <ul>
-                      <li v-for="track in post.tracks">
+                    <div v-show="post.tracks">
+                      <h4>Track Listing</h4>
+                      <ul>
+                        <li v-for="track in post.tracks">
 
-                        <span>{{track.index}}. {{track.title}}</span>
-                        <span>{{track.time}}</span>
+                          <span>{{track.index}}. {{track.title}}</span>
+                          <span>{{track.time}}</span>
 
-                      </li>
-                    </ul>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                   <div class="mpalbum__downloadheader">
                     <h4>Download Now</h4>
@@ -525,7 +527,7 @@
 <!--    <script src="/vendor/addIndicators.js"></script>-->
     
 
-    <script src="/dist/js/vue-app.js?v=0.0.3.0"></script>
+    <script src="/dist/js/vue-app.js?v=0.0.3.1"></script>
 <!--    <script src="/dist/js/vue-app.js"></script>-->
     
   </body>

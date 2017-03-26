@@ -4,6 +4,7 @@
   &__text{
     max-width:100%;
     margin: 0 auto;
+    padding: 0.3rem;
     h2 {
       font-size:3rem;
       margin-bottom: 1rem;
@@ -17,6 +18,9 @@
       @media(min-width:$bp-lg){
         font-size:4rem;
       }
+      @media(min-width:$bp-xl){
+        font-size:5rem;
+      }
     }
     p{
       text-indent: 0.5rem;
@@ -28,7 +32,9 @@
       font-size:1.2rem;
       margin-bottom: 1rem;
       font-family:$font-body;
-      @media(min-width: $bp-lg){
+      @media(min-width: $bp-xl){
+        max-width: 800px;
+        font-size: 1.6rem;
       }
     }
     
