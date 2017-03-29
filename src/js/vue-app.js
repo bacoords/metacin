@@ -198,7 +198,7 @@ var Home = Vue.extend({
           } else {
             $('body').removeClass('show-nav');
             $('body').addClass('hide-nav');
-            $('.header__menu-item').html('M');
+            $('.header__menu-item').html('M&#9776;');
           } 
           self.menu = !self.menu;
         });
@@ -206,7 +206,7 @@ var Home = Vue.extend({
         $('.header-nav__a').click(function(){    
           $('body').removeClass('show-nav');
           $('body').addClass('hide-nav');
-          $('.header__menu-item').html('M');
+          $('.header__menu-item').html('M&#9776;');
           self.menu = !self.menu;
         });
 
@@ -705,7 +705,7 @@ var Gallery = Vue.extend({
 
 
 var Laboratory = Vue.extend({
-  template : '<div class="coming-soon"><h1>Laboratory</h1><h2>Coming Soon</h2></div>',
+  template : '#laboratoryTemplate',
   store: store,
   mixins : [mixin],
   data: function(){
@@ -718,11 +718,6 @@ var Laboratory = Vue.extend({
    
         // Update title
         setDocTitle('Laboratory');
-
-        // Animate Header
-        var tl = animFeatActive('.feat-laboratory');
-        tl.play();
-        
       
       $('html, body').scrollTop(0);
 
@@ -733,7 +728,7 @@ var Laboratory = Vue.extend({
 
 
 var Events = Vue.extend({
-  template : '<div class="coming-soon"><h1>Events</h1><h2>Coming Soon</h2></div>',
+  template : '#eventsTemplate',
   store: store,
   mixins : [mixin],
   data: function(){
@@ -746,11 +741,29 @@ var Events = Vue.extend({
    
      // Update title
       setDocTitle('Events');
-      
-      
-     // Animate Header
-      var tl = animFeatActive('.feat-events');
-      tl.play();
+        
+      $('html, body').scrollTop(0);
+ 
+    });
+  }
+});
+ 
+
+
+var Contact = Vue.extend({
+  template : '<div class="coming-soon"><h1>Contact</h1><h2>Coming Soon</h2></div>',
+  store: store,
+  mixins : [mixin],
+  data: function(){
+    return {
+      loaded : false 
+    }
+  },
+  mounted : function(){
+    this.$nextTick(function(){
+   
+     // Update title
+      setDocTitle('Contact');
         
       $('html, body').scrollTop(0);
  
@@ -987,6 +1000,11 @@ var router = new VueRouter({
       path : '/events',
       name : 'events', 
       component: Events
+    },
+    {
+      path : '/contact',
+      name : 'contact', 
+      component: Contact
     },
     {
       path : '*',

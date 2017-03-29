@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="/dist/css/main.css?v=0.0.3.1">
+    <link rel="stylesheet" href="/dist/css/main.css?v=0.0.3.2">
   </head>
   <body>
     <!--[if lt IE 8]>
@@ -29,7 +29,7 @@
           </div>
         </div>
          <a class="header__menu-item header__mobile-link">
-           M
+           M&#9776;
          </a>
          
          <nav class="header-nav">
@@ -39,6 +39,7 @@
              <router-link class="header-nav__a" active-class="header-nav__a-active" to="/gallery"><span>Eye Gallery</span></router-link>
              <router-link class="header-nav__a" active-class="header-nav__a-active" to="/laboratory"><span>Laboratory</span></router-link>
              <router-link class="header-nav__a" active-class="header-nav__a-active" to="/events"><span>Events</span></router-link>
+             <router-link class="header-nav__a" active-class="header-nav__a-active" to="/contact"><span>Contact</span></router-link>
            </div>
          </nav>
          
@@ -132,7 +133,7 @@
               </div>
               <div class="mpbox__text">
                 <h2>Music Hall</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores libero, dolorem fuga ipsam aut, quia rerum, nihil quis vitae consectetur sunt ad est vel dolores ea vero autem fugiat temporibus.</p>
+                <p>Explore the music of Michael Yeaman on the <strong>Soundstage</strong> — and go inside the music to learn more <strong>On the Record</strong>. </p>
                 <router-link to="/music" >Visit Music Hall</router-link>
               </div>
             </div>
@@ -161,7 +162,7 @@
                 </div>
                 <div class="mpbox__text ">
                   <h2>Eye Gallery</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores libero, dolorem fuga ipsam aut, quia rerum, nihil quis vitae consectetur sunt ad est vel dolores ea vero autem fugiat temporibus.</p>
+                  <p>Explore the art of Michael Yeaman in the <strong>Eye Gallery</strong> to see music in a beautiful new way that is more than meets the ear.</p>
                   <router-link to="/gallery" >Visit Eye Gallery</router-link>
                 </div>
               </div>
@@ -190,7 +191,7 @@
                 </div>
                 <div class="mpbox__text">
                   <h2>Laboratory</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores libero, dolorem fuga ipsam aut, quia rerum, nihil quis vitae consectetur sunt ad est vel dolores ea vero autem fugiat temporibus.</p>
+                  <p>Explore the science of Michael Yeaman in the <strong>Laboratory</strong> to interact in his sound medicine research.</p>
                   <router-link to="/laboratory" >Visit Laboratory</router-link>
                 </div>
               </div>
@@ -220,8 +221,8 @@
                 </div>
                 <div class="mpbox__text">
                   <h2>Events</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores libero, dolorem fuga ipsam aut, quia rerum, nihil quis vitae consectetur sunt ad est vel dolores ea vero autem fugiat temporibus.</p>
-                  <router-link to="/laboratory" >See Upcoming Events</router-link>
+                  <p>You are invited to join the Metacin contact list to receive the latest updates on new music releases, performances and special events.</p>
+                  <router-link to="/events" >See Upcoming Events</router-link>
                 </div>
               </div>
             </div>
@@ -266,10 +267,10 @@
               <div class="mpintro__text">
                 <h2 >Musicology</h2>
                 <br><br>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
-                <p>Praesent ut facilisis nulla, non maximus urna. Nunc feugiat urna et vestibulum pulvinar. Ut blandit rutrum urna, eget varius nibh dignissim ut. Aenean dictum sem ligula, at sollicitudin quam laoreet quis. Suspendisse in nibh neque. Integer quis diam hendrerit, vehicula ante eu, maximus nisi. In et mi mauris.</p>
+                <p>The essential elements of music are pitch, tone, volume and time.  Patterns of these elements govern musical structure — melody and harmony of course — but more:  motif, symmetry, proportion, relativity.  As in any language, arrangement of musical elements provides syntax and conveys meaning. </p>
+                <p> Explore the music of Michael Yeaman on the <a href="#mpgal">Soundstage</a> — and go inside the music to learn more <a href="#mprecord">On the Record</a>. </p>
                 <br><br>
-                <a href="#mpgal">Explore the Soundstage</a>
+                <a href="#mpgal" class="mpintro__btn">Explore the Soundstage</a>
               </div>
             </div>
 
@@ -300,7 +301,7 @@
 
 
         <!--      On the Record Narrative-->
-        <div class="mpintro">
+        <div id="mprecord" class="mpintro">
           <div class="mpintro__text">
             <h2>On The Record</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi soluta deserunt eaque, quod quidem totam laudantium, quos repellendus architecto et dolorem eum? Blanditiis sunt officiis vitae, necessitatibus nemo ipsam, amet.</p>
@@ -394,11 +395,11 @@
               <div class="mpintro__text">
                 <h2 >Eye Gallery</h2>
                 <br><br>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam consequatur, ipsa. Sunt quaerat, delectus, aut enim aperiam facilis consequatur eligendi. Facere natus molestias nam architecto, fugiat ea incidunt impedit?</p>
-                <p>Praesent ut facilisis nulla, non maximus urna. Nunc feugiat urna et vestibulum pulvinar. Ut blandit rutrum urna, eget varius nibh dignissim ut. Aenean dictum sem ligula, at sollicitudin quam laoreet quis. Suspendisse in nibh neque. Integer quis diam hendrerit, vehicula ante eu, maximus nisi. In et mi mauris.</p>
+                <p>Music touches every sense — from rhythm and movement to emotion and memory.  Listening to music is one way to experience its benefits — and visualizing music is another way to appreciate its patterns and meaning. </p>
+                <p> Explore the art of Michael Yeaman in the <a href="#mpgal">Eye Gallery</a> to see music in a beautiful new way that is more than meets the ear. </p>
                 
                 <br><br>
-                <a href="#mpgal">Explore the Sound of Light</a>
+                <a href="#mpgal" class="mpintro__btn">Explore the Sound of Light</a>
               </div>
             </div>           
           </div>
@@ -507,6 +508,92 @@
         </div>
       </div> 
     </template>
+    
+    
+    
+  
+   
+    <!--  Laboratory -->
+    <template id="laboratoryTemplate">
+      <div id="laboratoryAnchor">
+        <div class="mploading" v-show="isLoading">
+           <div class="mploading__bouncer">
+             <div class="double-bounce1"></div>
+             <div class="double-bounce2"></div>
+           </div>
+        </div>
+        <div v-show="!isLoading">
+
+
+        <!--   Intro-->
+        
+        <div class="mpsnapbox mpsnapbox--laboratory">
+          <div class="mpsnapbox__inner">
+            
+
+        
+            <div class="mpintro">
+              <div class="mpintro__text">
+                <h2 >Laboratory</h2>
+                <br><br>
+                <p>Music has the ability to improve body and mind — it goes beyond traditional medicine — to strengthen, heal, inspire, teach, create, live.  The mysterious ways music achieves these effects are just beginning to be understood.  </p>
+                <p> Explore the science of Michael Yeaman in the <a href="#">Laboratory</a> to interact in his sound medicine research. </p>
+                <br><br>
+                <a href="#" class="mpintro__btn">Explore the Laboratory</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+     </div>
+    </template>
+    
+       
+    
+  
+   
+    <!--  Events  -->
+    <template id="eventsTemplate">
+      <div id="eventsAnchor">
+        <div class="mploading" v-show="isLoading">
+           <div class="mploading__bouncer">
+             <div class="double-bounce1"></div>
+             <div class="double-bounce2"></div>
+           </div>
+        </div>
+        <div v-show="!isLoading">
+
+
+        <!--   Intro-->
+        
+        <div class="mpsnapbox mpsnapbox--events">
+          <div class="mpsnapbox__inner">
+            
+
+        
+            <div class="mpintro">
+              <div class="mpintro__text">
+                <h2>Events</h2>
+                <br><br>
+                <p>You are invited to join the Metacin contact list to receive the latest updates on new music releases, performances and special events. </p>
+                <br><br>
+<!--                <a href="#" class="mpintro__btn">Explore the Laboratory</a>-->
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+     </div>
+    </template>
+    
+       
+    
 
     <script src="/vendor/jquery-3.1.0.js"></script>
     <script src="/vendor/particles.js"></script>
@@ -527,7 +614,7 @@
 <!--    <script src="/vendor/addIndicators.js"></script>-->
     
 
-    <script src="/dist/js/vue-app.js?v=0.0.3.1"></script>
+    <script src="/dist/js/vue-app.js?v=0.0.3.2"></script>
 <!--    <script src="/dist/js/vue-app.js"></script>-->
     
   </body>

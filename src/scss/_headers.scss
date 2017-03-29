@@ -126,16 +126,22 @@
           span{ transform: translateX(-10px); }
         }
         &:nth-of-type(1){
-          transform: rotateZ(10deg);
+          transform: rotateZ(12.5deg);
         }
         &:nth-of-type(2){
-          transform: rotateZ(5deg);
+          transform: rotateZ(7.5deg);
+        }
+        &:nth-of-type(3){
+          transform: rotateZ(2.5deg);
         }
         &:nth-of-type(4){
-          transform: rotateZ(-5deg);
+          transform: rotateZ(-2.5deg);
         }
         &:nth-of-type(5){
-          transform: rotateZ(-10deg);
+          transform: rotateZ(-7.5deg);
+        }
+        &:nth-of-type(6){
+          transform: rotateZ(-12.5deg);
         }
       }
     }

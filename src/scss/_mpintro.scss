@@ -32,13 +32,24 @@
       font-size:1.2rem;
       margin-bottom: 1rem;
       font-family:$font-body;
+      text-align: justify;
       @media(min-width: $bp-xl){
         max-width: 800px;
         font-size: 1.6rem;
       }
     }
     
-    a{
+    a {
+      color: $white;
+      font-weight: 900;
+      text-decoration: none;
+      transition: all 300ms ease;
+      &:hover {
+        color: $mpblue-dk;
+      }
+    }
+    
+    a.mpintro__btn {
       display: inline;
       padding:0.7rem 1rem 0.7rem 1rem;
       color:$white;
