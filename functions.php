@@ -19,10 +19,10 @@ function met_enqueue_scripts()
   
   $the_theme = wp_get_theme();
   
-	wp_register_script('theme-vendor-js', get_template_directory_uri() . '/dist/js/vendor.js?v=' . $the_theme->get( 'Version' ), false, null, true);
+	wp_register_script('theme-vendor-js', get_template_directory_uri() . '/dist/js/vendor.js?v=' . $the_theme->get( 'Version' ), array('jquery'), null, true);
 
 
-	wp_register_script('theme-app-js', get_template_directory_uri() . '/dist/js/vue-app.js?v=' . $the_theme->get( 'Version' ), false, null, true);
+	wp_register_script('theme-app-js', get_template_directory_uri() . '/dist/js/vue-app.js?v=' . $the_theme->get( 'Version' ), array('jquery'), null, true);
 
 
   wp_enqueue_script( 'theme-vendor-js' );
