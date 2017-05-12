@@ -5,6 +5,8 @@ var	imagemin = require('gulp-imagemin');
 var	autoprefixer = require('gulp-autoprefixer');
 var minifycss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
+
 
 gulp.task('default', ['watch']);
 
@@ -23,6 +25,12 @@ gulp.task('js', function() {
     .pipe(uglify().on('error', function(e){
       console.log(e);
     }))
+    .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('vendorjs', function() {
+  return gulp.src('vendor/*.js')
+    .pipe(concat('vendor.js'))
     .pipe(gulp.dest('dist/js'));
 });
 
