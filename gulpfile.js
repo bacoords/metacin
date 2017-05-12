@@ -29,7 +29,20 @@ gulp.task('js', function() {
 });
 
 gulp.task('vendorjs', function() {
-  return gulp.src('vendor/*.js')
+  return gulp.src([
+    'vendor/vue.2.js',
+    'vendor/vue-router.2.js',
+    'vendor/vuex.2.js',
+    'vendor/parallax.min.js',
+    'vendor/particles.js',
+    'vendor/modernizr.custom.js',
+    'vendor/TweenMax.min.js',
+    'vendor/TimelineMax.min.js',
+    'vendor/ScrollMagic.min.js',
+    'vendor/scrollsnap-polyfill.bundled.js',
+    'vendor/animation.gsap.js',
+    'vendor/gsap-then.browser.js'
+  ])
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest('dist/js'));
 });

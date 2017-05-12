@@ -179,7 +179,7 @@ var Home = Vue.extend({
       
       
       // Pre Load Images
-      var a = ['/dist/img/gallery-8.png','/dist/img/yeaman.png','/dist/img/pexels-2.jpg','/dist/img/neurons.jpg','/dist/img/pexels-1.jpg']; 
+      var a = ['wp-content/themes/metacin-wp-theme/dist/img/gallery-8.png','wp-content/themes/metacin-wp-theme/dist/img/yeaman.png','wp-content/themes/metacin-wp-theme/dist/img/pexels-2.jpg','wp-content/themes/metacin-wp-theme/dist/img/neurons.jpg','wp-content/themes/metacin-wp-theme/dist/img/pexels-1.jpg']; 
       var self = this;
       this.preload(a, function(){
         
@@ -374,25 +374,25 @@ var Music = Vue.extend({
         {
           title : 'Infexious',
           slug : 'infexious',
-          image : '/dist/img/album-1.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/album-1.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Kinetic',
           slug : 'kinetic',
-          image : '/dist/img/album-2.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/album-2.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Seasons',
           slug : 'seasons',
-          image : '/dist/img/album-3.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/album-3.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Odyssey',
           slug : 'odyssey',
-          image : '/dist/img/odysse.final.jpg',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/odysse.final.jpg',
           content : '<p>Every life is an odyssey – a journey of pathways mirroring will and fate.  Each odyssey is a story of passages:  leaving home – facing challenges – finding courage – being changed – returning home.  In time, each tale is told through setback and loss – chance and victory.  Meaning emerges from quiet rhythms of each moment – and great echoes of each season – in the odyssey of every life.  Embrace your odyssey.</p>',
           tracks : [
             {
@@ -441,67 +441,67 @@ var Music = Vue.extend({
         {
           title : 'Nuvo',
           slug : 'nuvo',
-          image : '/dist/img/album-5.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/album-5.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Giving Light 2015',
           slug : 'giving-light-2015',
-          image : '/dist/img/album-6.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/album-6.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Giving Light 2014',
           slug : 'giving-light-2014',
-          image : '/dist/img/album-7.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/album-7.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Archetype',
           slug : 'archetype',
-          image : '/dist/img/album-8.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/album-8.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Giving Light  2013',
           slug : 'giving-light-2013',
-          image : '/dist/img/album-9.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/album-9.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Mariposa',
           slug : 'mariposa',
-          image : '/dist/img/album-10.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/album-10.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Rhythmology',
           slug : 'rythmology',
-          image : '/dist/img/album-11.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/album-11.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Elements',
           slug : 'elements',
-          image : '/dist/img/album-12.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/album-12.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Aegis',
           slug : 'aegis',
-          image : '/dist/img/album-13.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/album-13.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Code Among Chaos',
           slug : 'code-among-chaos',
-          image : '/dist/img/album-14.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/album-14.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Voices of the Moon',
           slug : 'voices-of-the-moon',
-          image : '/dist/img/album-15.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/album-15.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>' 
         },
       ],
@@ -542,7 +542,7 @@ var Music = Vue.extend({
 
 
       // Create array of images to load
-      var a = ['/dist/img/icon-amazon.png','/dist/img/icon-spotify.png','/dist/img/icon-itunes.png']; 
+      var a = ['wp-content/themes/metacin-wp-theme/dist/img/icon-amazon.png','wp-content/themes/metacin-wp-theme/dist/img/icon-spotify.png','wp-content/themes/metacin-wp-theme/dist/img/icon-itunes.png']; 
       self.posts.forEach(function(p){
         a.push(p.image);
       });
@@ -597,49 +597,49 @@ var Gallery = Vue.extend({
         {
           title : 'Earth',
           slug : 'earth',
-          image : '/dist/img/gallery-1.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/gallery-1.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Sirens',
           slug : 'sirens',
-          image : '/dist/img/gallery-2.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/gallery-2.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Autumn',
           slug : 'autumn',
-          image : '/dist/img/gallery-3.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/gallery-3.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Sky',
           slug : 'sky',
-          image : '/dist/img/gallery-4.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/gallery-4.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Winter',
           slug : 'winter',
-          image : '/dist/img/gallery-5.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/gallery-5.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Solstice',
           slug : 'solstice',
-          image : '/dist/img/gallery-6.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/gallery-6.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Obelisk',
           slug : 'obelisk',
-          image : '/dist/img/gallery-7.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/gallery-7.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         },
         {
           title : 'Canon in D',
           slug : 'canon-in-d',
-          image : '/dist/img/gallery-8.png',
+          image : 'wp-content/themes/metacin-wp-theme/dist/img/gallery-8.png',
           content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
         }
       ]
@@ -662,7 +662,7 @@ var Gallery = Vue.extend({
 
 
       // Create array of images to load
-      var a = ['/dist/img/icon-amazon.png','/dist/img/icon-spotify.png','/dist/img/icon-itunes.png']; 
+      var a = ['wp-content/themes/metacin-wp-theme/dist/img/icon-amazon.png','wp-content/themes/metacin-wp-theme/dist/img/icon-spotify.png','wp-content/themes/metacin-wp-theme/dist/img/icon-itunes.png']; 
       self.posts.forEach(function(p){
         a.push(p.image);
       });
