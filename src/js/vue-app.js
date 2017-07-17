@@ -115,6 +115,10 @@
   }
 
 
+  
+  //Replace vue-resource with axios
+  
+  Vue.prototype.$http = axios;
 
 
 
@@ -373,141 +377,7 @@
     data: function(){
       return {
         playing : false,
-        posts : [
-          {
-            title : 'Infexious',
-            slug : 'infexious',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/album-1.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Kinetic',
-            slug : 'kinetic',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/album-2.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Seasons',
-            slug : 'seasons',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/album-3.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Odyssey',
-            slug : 'odyssey',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/odysse.final.jpg',
-            content : '<p>Every life is an odyssey – a journey of pathways mirroring will and fate.  Each odyssey is a story of passages:  leaving home – facing challenges – finding courage – being changed – returning home.  In time, each tale is told through setback and loss – chance and victory.  Meaning emerges from quiet rhythms of each moment – and great echoes of each season – in the odyssey of every life.  Embrace your odyssey.</p>',
-            tracks : [
-              {
-                index : '1',
-                title: 'Odyssey',
-                time: '5:29' 
-              },{
-                index : '2',
-                title: 'Wayfarer',
-                time: '5:32'
-              },{
-                index : '3',
-                title: 'Conquest',
-                time: '5:31'
-              },{
-                index : '4',
-                title: 'Sirens',
-                time: '7:48'
-              },{
-                index : '5',
-                title: 'Nightfall',
-                time: '5:57'
-              },{
-                index : '6',
-                title: 'Underworld',
-                time: '5:28'
-              },{
-                index : '7',
-                title: 'Helios',
-                time: '6:01'
-              },{
-                index : '8',
-                title: 'Windsong',
-                time: '5:44'
-              },{
-                index : '9',
-                title: 'Homeland',
-                time: '5:42'
-              },{
-                index : '10',
-                title: 'Invictus',
-                time: '4:26'
-              }
-            ] 
-          },
-          {
-            title : 'Nuvo',
-            slug : 'nuvo',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/album-5.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Giving Light 2015',
-            slug : 'giving-light-2015',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/album-6.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Giving Light 2014',
-            slug : 'giving-light-2014',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/album-7.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Archetype',
-            slug : 'archetype',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/album-8.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Giving Light  2013',
-            slug : 'giving-light-2013',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/album-9.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Mariposa',
-            slug : 'mariposa',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/album-10.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Rhythmology',
-            slug : 'rythmology',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/album-11.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Elements',
-            slug : 'elements',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/album-12.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Aegis',
-            slug : 'aegis',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/album-13.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Code Among Chaos',
-            slug : 'code-among-chaos',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/album-14.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Voices of the Moon',
-            slug : 'voices-of-the-moon',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/album-15.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>' 
-          },
-        ],
+        posts : [],
       }
     },
     methods : {
@@ -527,7 +397,8 @@
         }
         this.playing = !this.playing;
         return;
-      }
+      },
+      
     },
     mounted : function(){
       this.$nextTick(function(){
@@ -542,45 +413,52 @@
         //After animation start loading
         store.commit('loadingOn');
 
+        self.$http.get(wp.root + 'wp/v2/music').then(function(response) {
+          
+          self.posts = response.data;
+          console.log(response.data);
+        
+            // Create array of images to load
+            var a = ['http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-amazon.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-spotify.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-itunes.png']; 
+            self.posts.forEach(function(p){
+              a.push(p.better_featured_image.source_url);
+            });
+
+            self.preload(a, function(){
 
 
-        // Create array of images to load
-        var a = ['http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-amazon.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-spotify.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-itunes.png']; 
-        self.posts.forEach(function(p){
-          a.push(p.image);
-        });
 
-        self.preload(a, function(){
+              // Remove Loader
+              store.commit('loadingOff');
 
 
+              // Add hover effect to gallery
+              $('.mpgal__item img').hover(function(){
+                $('.mpgal').addClass('mpgal--hovered');
+              }, function(){
+                $('.mpgal').removeClass('mpgal--hovered');
+              });
 
-          // Remove Loader
-          store.commit('loadingOff');
+              //SCROLLTOP on load
+              $('html, body').scrollTop(0);
 
 
-          // Add hover effect to gallery
-          $('.mpgal__item img').hover(function(){
-            $('.mpgal').addClass('mpgal--hovered');
-          }, function(){
-            $('.mpgal').removeClass('mpgal--hovered');
+              // Show featureds on animation
+              mpFadeIn();
+              var $window = $(window);
+              $window.on('scroll resize', mpFadeIn);
+              $window.trigger('scroll');
+
+
+              // Initialize Smooth Scroll Watcher
+              smoothScrollInit();
+            });
+          
+          }, function(response) {
+          
+              console.log(response);
+          
           });
-
-          //SCROLLTOP on load
-          $('html, body').scrollTop(0);
-
-
-          // Show featureds on animation
-          mpFadeIn();
-          var $window = $(window);
-          $window.on('scroll resize', mpFadeIn);
-          $window.trigger('scroll');
-
-
-          // Initialize Smooth Scroll Watcher
-          smoothScrollInit();
-        });
-
-
 
       });
 
@@ -811,36 +689,40 @@
 
         // Get Post Info (from parent but soon to be VueX)
         var self = this;
-        var p = this.$parent.posts.filter(function(post){
-          return post.slug == self.$route.params.slug;
-        });
-        console.log(p[0]);
-        this.post = Object.assign({}, { content : p[0].content, image : p[0].image, slug : p[0].slug, title : p[0].title, tracks : p[0].tracks});
+        
+        self.$http.get(wp.root + 'wp/v2/music?slug=' + self.$route.params.slug).then(function(response) { 
+          
+          self.post = response.data[0];
 
+         // Update title
+          setDocTitle(self.post.title.rendered);
 
-       // Update title
-        setDocTitle(this.post.title);
-
-        // Display Properties
-        $('.mpmodal').addClass('mpmodal--active');
-        document.body.classList.add('no-scroll');
-
-
-
-        // Back on Escape
-        $(document).keyup(function(e) {
-          if (e.keyCode == 27) { // escape key maps to keycode `27`
-            router.push({path : '/music'});
-          }
-        });
+          // Display Properties
+          $('.mpmodal').addClass('mpmodal--active');
+          document.body.classList.add('no-scroll');
 
 
 
-        // Back on exit button
-        $('.mpmodal__exit').click(function(){
-          console.log('exit');  
-          self.closeAlbum();
-        });
+          // Back on Escape
+          $(document).keyup(function(e) {
+            if (e.keyCode == 27) { // escape key maps to keycode `27`
+              router.push({path : '/music'});
+            }
+          });
+
+
+
+          // Back on exit button
+          $('.mpmodal__exit').click(function(){
+            console.log('exit');  
+            self.closeAlbum();
+          });
+          
+          }, function(response) {
+          
+              console.log(response);
+          
+          });
 
       });
     } 

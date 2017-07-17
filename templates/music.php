@@ -45,7 +45,7 @@
           </div>
           <div v-for="post in posts" class="mpgal__item mpfadein">
             <router-link :to="'/music/' + post.slug">
-              <img :src="post.image" :alt="post.title">
+              <img :src="post.better_featured_image.source_url" :alt="post.title.rendered">
             </router-link>
           </div>
         </div>

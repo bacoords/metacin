@@ -11,16 +11,16 @@
             </div>
             <div class="mpalbum__body">
               <div class="mpalbum__image">
-                <img :src="post.image" :alt="post.title" >
+                <img :src="post.better_featured_image.source_url" :alt="post.title.rendered" >
               </div>
               <div class="mpalbum__description">
                 <div class="mpalbum__title">
-                  <h3>{{post.title}}</h3>
+                  <h3>{{post.title.rendered}}</h3>
                 </div>
                 <div class="mpalbum__content">
                   <h4>Teaser</h4>
-                  <div v-html="post.content"></div>
-                  <small>&copy; 2012 Michael Yeaman / Metacin, Inc. &amp; Chris Rhodes / SSRMW<br>(P) 2017 Michael Yeaman / Metacin, Inc.</small>
+                  <div v-html="post.content.rendered"></div>
+                  <small v-html="post.cmb2.music_metabox_main._met_release"></small>
                 </div>
                 <div class="mpalbum__footer">
 
@@ -28,10 +28,10 @@
                     <div v-show="post.tracks">
                       <h4>Track Listing</h4>
                       <ul>
-                        <li v-for="track in post.tracks">
+                        <li v-for="track in post.cmb2.music_metabox_tracks.music_tracks_repeat_group">
 
                           <span>{{track.index}}. {{track.title}}</span>
-                          <span>{{track.time}}</span>
+                          <span>{{track.length}}</span>
 
                         </li>
                       </ul>
@@ -41,9 +41,9 @@
                     <h4>Download Now</h4>
                   </div>
                   <div class="mpalbum__download">
-                    <a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/img/icon-itunes.png" alt="Available on iTunes"></a>
-                    <a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/img/icon-spotify.png" alt="Listen on Spotify"></a>
-                    <a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/img/icon-amazon.png" alt="Available on Amazon Music"></a>
+                    <a :href="post.cmb2.music_metabox_purchase._met_itunes" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/img/icon-itunes.png" alt="Available on iTunes"></a>
+                    <a :href="post.cmb2.music_metabox_purchase._met_google_play" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/img/icon-spotify.png" alt="Listen on Spotify"></a>
+                    <a :href="post.cmb2.music_metabox_purchase._met_amazon" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/img/icon-amazon.png" alt="Available on Amazon Music"></a>
                   </div>
                 </div>
               

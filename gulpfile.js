@@ -41,7 +41,8 @@ gulp.task('vendorjs', function() {
     'vendor/ScrollMagic.min.js',
     'vendor/scrollsnap-polyfill.bundled.js',
     'vendor/animation.gsap.js',
-    'vendor/gsap-then.browser.js'
+    'vendor/gsap-then.browser.js',
+    'vendor/axios.js'
   ])
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest('dist/js'));
