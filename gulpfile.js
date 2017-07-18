@@ -22,9 +22,9 @@ gulp.task('css', function(){
 
 gulp.task('js', function() {
   return gulp.src('src/js/*.js')
-    .pipe(uglify().on('error', function(e){
-      console.log(e);
-    }))
+//    .pipe(uglify().on('error', function(e){
+//      console.log(e);
+//    }))
     .pipe(gulp.dest('dist/js'));
 });
 

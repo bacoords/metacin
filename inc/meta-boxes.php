@@ -13,12 +13,12 @@ function cmb2_metaboxes() {
 	$prefix = '_met_';
 
 	/**
-	 * Initiate the metabox
+	 * Main Custom Fields
 	 */
 	$cmb = new_cmb2_box( array(
 		'id'            => 'music_metabox_main',
 		'title'         => __( 'Music Custom Fields', 'cmb2' ),
-		'object_types'  => array( 'music', ), // Post type
+		'object_types'  => array( 'music', 'gallery'), // Post type
 		'context'       => 'normal',
 		'priority'      => 'high',
 		'show_names'    => true, // Show field names on the left
@@ -75,7 +75,7 @@ function cmb2_metaboxes() {
   
 
 	/**
-	 * Initiate the metabox
+	 * Music Purchase Links Metabox
 	 */
 	$cmb = new_cmb2_box( array(
 		'id'            => 'music_metabox_purchase',
@@ -121,11 +121,11 @@ function cmb2_metaboxes() {
   
 
 	/**
-	 * Initiate the metabox
+	 * Album Track Listing
 	 */
 	$cmb = new_cmb2_box( array(
 		'id'            => 'music_metabox_tracks',
-		'title'         => __( 'Music Track Listing', 'cmb2' ),
+		'title'         => __( 'Music Manual Track Listing', 'cmb2' ),
 		'object_types'  => array( 'music', ), // Post type
 		'context'       => 'normal',
 		'priority'      => 'high',
@@ -163,5 +163,66 @@ function cmb2_metaboxes() {
         'type' => 'text_small',
     ) );
 
+  
+  
+  
 
+	/**
+	 * Gallery MP3 File
+	 */
+	$cmb = new_cmb2_box( array(
+		'id'            => 'gallery_metabox_preview',
+		'title'         => __( 'Music Preview File', 'cmb2' ),
+		'object_types'  => array( 'gallery', ), // Post type
+		'context'       => 'normal',
+		'priority'      => 'high',
+		'show_names'    => true, // Show field names on the left
+		// 'cmb_styles' => false, // false to disable the CMB stylesheet
+		// 'closed'     => true, // Keep the metabox closed by default
+        'show_in_rest' => WP_REST_Server::ALLMETHODS,
+	) );
+
+    $cmb->add_field( array(
+        'name'    => 'Audio Privew File',
+        'desc'    => 'Upload an MP3 or enter an URL.',
+        'id'      => 'audio_preview_file',
+        'type'    => 'file',
+        // Optional:
+        'options' => array(
+            'url' => false, // Hide the text input for the url
+        ),
+        'text'    => array(
+            'add_upload_file_text' => 'Add File' // Change upload button text. Default: "Add or Upload File"
+        ),
+        // query_args are passed to wp.media's library query.
+        'query_args' => array(
+            'type' => 'audio/mpeg', // Make library only display MP3s.
+        ),
+    ) );
+  
+
+	/**
+	 * Music Itunes ID
+	 */
+	$cmb = new_cmb2_box( array(
+		'id'            => 'music_metabox_itunes',
+		'title'         => __( 'Music ITunes ID', 'cmb2' ),
+		'object_types'  => array( 'music', ), // Post type
+		'context'       => 'normal',
+		'priority'      => 'high',
+		'show_names'    => true, // Show field names on the left
+		// 'cmb_styles' => false, // false to disable the CMB stylesheet
+		// 'closed'     => true, // Keep the metabox closed by default
+        'show_in_rest' => WP_REST_Server::ALLMETHODS,
+	) );
+
+
+
+	$cmb->add_field( array(
+		'name' => __( 'ITunes ID', 'cmb2' ),
+//		'desc' => __( 'field description (optional)', 'cmb2' ),
+		'id'   => $prefix . 'itunes_id',
+		'type' => 'text_small',
+		// 'repeatable' => true,
+	) );
 }

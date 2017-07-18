@@ -110,6 +110,18 @@
         
         return str.replace(/(?:\r\n|\r|\n)/g, '<br />');
         
+      },
+      msToTime : function (duration) {
+          var milliseconds = parseInt((duration%1000)/100)
+              , seconds = parseInt((duration/1000)%60)
+              , minutes = parseInt((duration/(1000*60))%60)
+              , hours = parseInt((duration/(1000*60*60))%24);
+
+          hours = (hours < 10) ? "0" + hours : hours;
+//          minutes = (minutes < 10) ? "0" + minutes : minutes;
+          seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+          return minutes + ":" + seconds;
       }
     },
     computed : {
@@ -148,7 +160,7 @@
 
 
   // Main Home Component
-  var Home = Vue.extend({
+  var Home = Vue.component('home', {
     template : '#featuredTemplate',
     store: store,
     mixins : [mixin],
@@ -409,13 +421,95 @@
       
         var self = this;
 
+        //After animation start loading
+        store.commit('loadingOn');
+
+        self.$http.get(wp.root + 'wp/v2/music/?per_page=50').then(function(response) {
+          
+          self.posts = response.data;
+          
+
+      }, function(response) {
+
+          console.log(response);
+
+      });
+
+    },
+    mounted : function(){
+      var self = this;
+      
+
+        self.$nextTick(function(){
+
+         // Update title
+          setDocTitle('Music Hall');
+
+          // Create array of images to load
+          var a = ['http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-amazon.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/google-play.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-itunes.png']; 
+          self.posts.forEach(function(post){
+            a.push(post.better_featured_image.source_url);
+          });
+
+          self.preload(a, function(){
+
+            // Remove Loader
+            store.commit('loadingOff');
+
+
+            // Add hover effect to gallery
+            $('.mpgal__item img').hover(function(){
+              $('.mpgal').addClass('mpgal--hovered');
+            }, function(){
+              $('.mpgal').removeClass('mpgal--hovered');
+            });
+
+            //SCROLLTOP on load
+            $('html, body').scrollTop(0);
+
+
+            // Show featureds on animation
+            mpFadeIn();
+            var $window = $(window);
+            $window.on('scroll resize', mpFadeIn);
+            $window.trigger('scroll');
+
+
+            // Initialize Smooth Scroll Watcher
+            smoothScrollInit();
+
+          });
+
+      });
+      
+    }
+    
+  });
+
+
+
+  var Gallery = Vue.extend({
+    template : '#galleryTemplate',
+    store: store,
+    mixins : [mixin],
+    data: function(){
+      return {
+        loaded : true,
+        posts : []
+      }
+    },
+    methods : {},
+    created : function(){
+      
+        var self = this;
+
        // Update title
-        setDocTitle('Music Hall');
+        setDocTitle('Eye Gallery');
 
         //After animation start loading
         store.commit('loadingOn');
 
-        self.$http.get(wp.root + 'wp/v2/music').then(function(response) {
+        self.$http.get(wp.root + 'wp/v2/gallery').then(function(response) {
           
           self.posts = response.data;
           
@@ -471,125 +565,6 @@
       });
       
     }
-    
-  });
-
-
-
-  var Gallery = Vue.extend({
-    template : '#galleryTemplate',
-    store: store,
-    mixins : [mixin],
-    data: function(){
-      return {
-        loaded : true,
-        posts : [
-          {
-            title : 'Earth',
-            slug : 'earth',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/gallery-1.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Sirens',
-            slug : 'sirens',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/gallery-2.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Autumn',
-            slug : 'autumn',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/gallery-3.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Sky',
-            slug : 'sky',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/gallery-4.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Winter',
-            slug : 'winter',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/gallery-5.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Solstice',
-            slug : 'solstice',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/gallery-6.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Obelisk',
-            slug : 'obelisk',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/gallery-7.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          },
-          {
-            title : 'Canon in D',
-            slug : 'canon-in-d',
-            image : 'http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/gallery-8.png',
-            content : '<p>When I get off of this mountain You know where I want to go Straight down the Mississippi River To the Gulf of Mexico </p><p> To Lake George, Louisiana Little Bessie, girl that I once knew And she told me just to come on by If there\'s anything she could do </p><p> Up on Cripple Creek she sends me If I spring a leak she mends me I don\'t have to speak she defends me A drunkard\'s dream if I ever did see one</p>'
-          }
-        ]
-      }
-    },
-    methods : {},
-    mounted : function(){
-      this.$nextTick(function(){
-
-       // Update title
-        setDocTitle('Eye Gallery');
-
-
-        var self = this;
-
-
-        //After animation start loading
-        store.commit('loadingOn');
-
-
-
-        // Create array of images to load
-        var a = ['http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-amazon.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/google-play.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-itunes.png']; 
-        self.posts.forEach(function(p){ 
-          a.push(p.image);
-        });
-
-        self.preload(a, function(){
-
-
-
-          // Remove Loader
-          store.commit('loadingOff');
-
-
-          // Add hover effect to gallery
-          $('.mpgal__item img').hover(function(){
-            $('.mpgal').addClass('mpgal--hovered');
-          }, function(){
-            $('.mpgal').removeClass('mpgal--hovered');
-          });
-
-          //SCROLLTOP on load
-          $('html, body').scrollTop(0);
-
-
-          // Show featureds on animation
-          mpFadeIn();
-          var $window = $(window);
-          $window.on('scroll resize', mpFadeIn);
-          $window.trigger('scroll');
-
-
-          // Initialize Smooth Scroll Watcher
-          smoothScrollInit();
-        });
-
-
-      });
-    }
   });
 
 
@@ -640,24 +615,43 @@
 
 
 
-  var Contact = Vue.extend({
+  var Contact = Vue.component('contact', {
     template : '#contactTemplate',
     store: store,
     mixins : [mixin],
     data: function(){
       return {
-        loaded : false 
+        post : []
       }
     },
-    mounted : function(){
-      this.$nextTick(function(){
+    mounted : function(){    
+      
+      store.commit('loadingOn');
+      
+      var self = this;
+      
+      self.$http.get(wp.root + 'wp/v2/pages?slug=contact').then(function(response) { 
 
-       // Update title
-        setDocTitle('Contact');
+        self.post = response.data[0];
 
-        $('html, body').scrollTop(0);
+        self.$nextTick(function(){
+
+                // Update title
+          setDocTitle('Contact');
+
+          $('html, body').scrollTop(0);
+          
+          store.commit('loadingOff');
+
+        });
+
+        
+      }, function(response) {
+
+        console.log(response);
 
       });
+      
     }
   });
 
@@ -670,11 +664,12 @@
     data : function(){
       return {
         post : {
-          title : '',
-          content : '',
-          image : '',
-          slug : ''
-        }
+          
+        },
+        tracks : {
+          
+        },
+        apiLoaded : false
       }
     },
     beforeDestroy : function(){
@@ -683,39 +678,44 @@
 
     },
     methods : {
-//      closeAlbum : function(){
-//        router.push({path : '/music'});
-//
-//
-//        // Update title
-//        setDocTitle('Music Hall');
-//        return;
-//      }
+
     },
     created : function(){ 
-      
-      // Get Post Info (from parent but soon to be VueX)
-      var self = this;
-
-      self.$http.get(wp.root + 'wp/v2/music?slug=' + self.$route.params.slug).then(function(response) { 
-          
-        self.post = response.data[0];
-        
-        console.log(self.post);
-          
-      }, function(response) {
-
-        console.log(response);
-
-      });
       
     },
     mounted : function(){
       
       var self = this;
       
-      self.$nextTick(function(){
+      self.$http.get(wp.root + 'wp/v2/music?slug=' + self.$route.params.slug).then(function(response) { 
 
+        self.post = response.data[0];
+        
+        console.log(response.data[0].cmb2.music_metabox_itunes._met_itunes_id);
+        
+        if(response.data[0].cmb2.music_metabox_itunes._met_itunes_id != ''){
+        
+          self.$http.get('https://itunes.apple.com/lookup?id=' + response.data[0].cmb2.music_metabox_itunes._met_itunes_id + '&entity=song').then(function(response){
+
+            console.log(response.data.results);
+
+            self.tracks = response.data.results;
+
+            self.tracks.splice(0,1);
+
+          });
+          
+        } else {
+          
+          self.tracks = false;
+          
+        }
+        
+
+        self.$nextTick(function(){
+          
+          
+          self.apiLoaded = true;
          // Update title
           setDocTitle(self.post.title.rendered);
 
@@ -732,14 +732,15 @@
 
           });
 
-          // Back on exit button
-          $('.mpmodal__exit').click(function(){
+        });
 
-            router.push({path : '/music'});
+        
+      }, function(response) {
 
-          });
+        console.log(response);
 
       });
+      
       
     }
     
@@ -754,11 +755,9 @@
     data : function(){
       return {
         post : {
-          title : '',
-          content : '',
-          image : '',
-          slug : ''
-        }
+          
+        },
+        apiLoaded : false
       }
     },
     beforeDestroy : function(){
@@ -767,88 +766,85 @@
 
     },
     methods : {
-      closeAlbum : function(){
-        router.push({path : '/gallery'});
-        // Update title
-        setDocTitle('Eye Gallery');
-        return;
-      }
+
+    },
+    created : function(){ 
+      
     },
     mounted : function(){
-      this.$nextTick(function(){
+      
+      var self = this;
+      
+      self.$http.get(wp.root + 'wp/v2/gallery?slug=' + self.$route.params.slug).then(function(response) { 
 
-        var self = this;
+        self.post = response.data[0];
 
-        var p = this.$parent.posts.filter(function(post){
-          return post.slug == self.$route.params.slug;
-        });
+        self.$nextTick(function(){
+          
+          
+          self.apiLoaded = true;
+         // Update title
+          setDocTitle(self.post.title.rendered);
 
-        this.post = Object.assign({}, { content : p[0].content, image : p[0].image, slug : p[0].slug, title : p[0].title });
+          // Display Properties
+          $('.mpmodal').addClass('mpmodal--active');
+          document.body.classList.add('no-scroll');
+
+          // Back on Escape
+          $(document).keyup(function(e) {
+
+            if (e.keyCode == 27) { // escape key maps to keycode `27`
+              router.push({path : '/music'});
+            }
+
+          });
+          
+          function initMPAlbum(){
+
+            // Set image height
+            var imgHeight = $('.mpalbum__image > img').height() + 15;
+  //          console.log('height', imgHeight);
+            $('.mpalbum__progress').height(imgHeight + 'px');
+            $('.mpalbum__progress-bar').height(imgHeight + 'px');
+
+            // Set image width
+            var imgWidth = $('.mpalbum__image > img').width();
+  //          console.log('width', imgWidth);
+            $('.mpalbum__progress').width(imgWidth + 'px');
 
 
-       // Update title
-        setDocTitle(this.post.title);
+            // Track Audio Position
+            $('.mpalbum__player').bind('play', function(){
+              $('.mpalbum__progress-bar').width('0%');
+            });
 
+            $('.mpalbum__player').bind('timeupdate', function(){
+  //            console.log (this.currentTime);
+  //            console.log (this.duration);
+  //            console.log ((this.currentTime / this.duration));
 
+              $('.mpalbum__progress-bar').width(((this.currentTime / this.duration) * 100) + '%');
+            });
 
-
-        // Display Properties
-        $('.mpmodal').addClass('mpmodal--active');
-        document.body.classList.add('no-scroll');
-
-
-
-        // Back on Escape
-        $(document).keyup(function(e) {
-          if (e.keyCode == 27) { // escape key maps to keycode `27`
-            router.push({path : '/gallery'});
           }
+
+          var checkExist = setInterval(function() {
+             if ($('.mpalbum__image > img').width() > 0) {
+                initMPAlbum();
+                clearInterval(checkExist);
+             }
+          }, 100); // check every 100ms
+
         });
 
+        
+      }, function(response) {
 
-
-        // Back on exit click
-        $('.mpmodal__exit').click(function(){
-          self.closeAlbum();
-        });
-
-        function initMPAlbum(){
-
-          // Set image height
-          var imgHeight = $('.mpalbum__image > img').height() + 15;
-          console.log('height', imgHeight);
-          $('.mpalbum__progress').height(imgHeight + 'px');
-          $('.mpalbum__progress-bar').height(imgHeight + 'px');
-
-          // Set image width
-          var imgWidth = $('.mpalbum__image > img').width();
-          console.log('width', imgWidth);
-          $('.mpalbum__progress').width(imgWidth + 'px');
-
-
-          // Track Audio Position
-          $('.mpalbum__player').bind('play', function(){
-            $('.mpalbum__progress-bar').width('0%');
-          });
-
-          $('.mpalbum__player').bind('timeupdate', function(){
-            console.log (this.currentTime);
-            console.log (this.duration);
-            console.log ((this.currentTime / this.duration));
-
-            $('.mpalbum__progress-bar').width(((this.currentTime / this.duration) * 100) + '%');
-          });
-
-        }
-
-        var checkExist = setInterval(function() {
-           if ($('.mpalbum__image > img').width() > 0) {
-              initMPAlbum();
-              clearInterval(checkExist);
-           }
-        }, 100); // check every 100ms
+        console.log(response);
 
       });
+      
+      
     },
     created: function() {
 
