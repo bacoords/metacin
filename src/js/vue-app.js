@@ -106,6 +106,11 @@
               } (new Image(), pictureUrls[i]));
           }
       },
+      addLineBreaks : function(str) {
+        
+        return str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+        
+      }
     },
     computed : {
        isLoading : function() {
@@ -370,7 +375,7 @@
     }
   });
 
-  var Music = Vue.extend({
+  var Music = Vue.component('music', {
     template : '#musicTemplate',
     store: store,
     mixins : [mixin],
@@ -400,15 +405,12 @@
       },
       
     },
-    mounted : function(){
-      this.$nextTick(function(){
-
-
+    created : function(){
+      
         var self = this;
 
        // Update title
         setDocTitle('Music Hall');
-
 
         //After animation start loading
         store.commit('loadingOn');
@@ -416,53 +418,60 @@
         self.$http.get(wp.root + 'wp/v2/music').then(function(response) {
           
           self.posts = response.data;
-          console.log(response.data);
-        
-            // Create array of images to load
-            var a = ['http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-amazon.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-spotify.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-itunes.png']; 
-            self.posts.forEach(function(p){
-              a.push(p.better_featured_image.source_url);
-            });
-
-            self.preload(a, function(){
-
-
-
-              // Remove Loader
-              store.commit('loadingOff');
-
-
-              // Add hover effect to gallery
-              $('.mpgal__item img').hover(function(){
-                $('.mpgal').addClass('mpgal--hovered');
-              }, function(){
-                $('.mpgal').removeClass('mpgal--hovered');
-              });
-
-              //SCROLLTOP on load
-              $('html, body').scrollTop(0);
-
-
-              // Show featureds on animation
-              mpFadeIn();
-              var $window = $(window);
-              $window.on('scroll resize', mpFadeIn);
-              $window.trigger('scroll');
-
-
-              // Initialize Smooth Scroll Watcher
-              smoothScrollInit();
-            });
           
-          }, function(response) {
-          
-              console.log(response);
-          
-          });
+
+      }, function(response) {
+
+          console.log(response);
 
       });
 
+    },
+    mounted : function(){
+      var self = this;
+      
+
+        self.$nextTick(function(){
+
+          // Create array of images to load
+          var a = ['http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-amazon.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/google-play.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-itunes.png']; 
+          self.posts.forEach(function(post){
+            a.push(post.better_featured_image.source_url);
+          });
+
+          self.preload(a, function(){
+
+            // Remove Loader
+            store.commit('loadingOff');
+
+
+            // Add hover effect to gallery
+            $('.mpgal__item img').hover(function(){
+              $('.mpgal').addClass('mpgal--hovered');
+            }, function(){
+              $('.mpgal').removeClass('mpgal--hovered');
+            });
+
+            //SCROLLTOP on load
+            $('html, body').scrollTop(0);
+
+
+            // Show featureds on animation
+            mpFadeIn();
+            var $window = $(window);
+            $window.on('scroll resize', mpFadeIn);
+            $window.trigger('scroll');
+
+
+            // Initialize Smooth Scroll Watcher
+            smoothScrollInit();
+
+          });
+
+      });
+      
     }
+    
   });
 
 
@@ -543,8 +552,8 @@
 
 
         // Create array of images to load
-        var a = ['http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-amazon.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-spotify.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-itunes.png']; 
-        self.posts.forEach(function(p){
+        var a = ['http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-amazon.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/google-play.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-itunes.png']; 
+        self.posts.forEach(function(p){ 
           a.push(p.image);
         });
 
@@ -654,7 +663,7 @@
 
 
 
-  var Album = Vue.extend({
+  var Album = Vue.component('album', {
     template : '#albumTemplate',
     store: store,
     mixins : [mixin],
@@ -674,25 +683,38 @@
 
     },
     methods : {
-      closeAlbum : function(){
-        router.push({path : '/music'});
+//      closeAlbum : function(){
+//        router.push({path : '/music'});
+//
+//
+//        // Update title
+//        setDocTitle('Music Hall');
+//        return;
+//      }
+    },
+    created : function(){ 
+      
+      // Get Post Info (from parent but soon to be VueX)
+      var self = this;
 
+      self.$http.get(wp.root + 'wp/v2/music?slug=' + self.$route.params.slug).then(function(response) { 
+          
+        self.post = response.data[0];
+        
+        console.log(self.post);
+          
+      }, function(response) {
 
-        // Update title
-        setDocTitle('Music Hall');
-        return;
-      }
+        console.log(response);
+
+      });
+      
     },
     mounted : function(){
-      this.$nextTick(function(){
-
-
-        // Get Post Info (from parent but soon to be VueX)
-        var self = this;
-        
-        self.$http.get(wp.root + 'wp/v2/music?slug=' + self.$route.params.slug).then(function(response) { 
-          
-          self.post = response.data[0];
+      
+      var self = this;
+      
+      self.$nextTick(function(){
 
          // Update title
           setDocTitle(self.post.title.rendered);
@@ -701,31 +723,26 @@
           $('.mpmodal').addClass('mpmodal--active');
           document.body.classList.add('no-scroll');
 
-
-
           // Back on Escape
           $(document).keyup(function(e) {
+
             if (e.keyCode == 27) { // escape key maps to keycode `27`
               router.push({path : '/music'});
             }
+
           });
-
-
 
           // Back on exit button
           $('.mpmodal__exit').click(function(){
-            console.log('exit');  
-            self.closeAlbum();
-          });
-          
-          }, function(response) {
-          
-              console.log(response);
-          
+
+            router.push({path : '/music'});
+
           });
 
       });
-    } 
+      
+    }
+    
   });
 
 
