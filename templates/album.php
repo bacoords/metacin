@@ -45,7 +45,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="mpalbum__downloadheader">
+                  <div class="mpalbum__downloadheader" v-if="post.cmb2.music_metabox_purchase._met_itunes || post.cmb2.music_metabox_purchase._met_google_play || post.cmb2.music_metabox_purchase._met_amazon">
                     <h4>Download Now</h4>
                   </div>
                   <div class="mpalbum__download" v-if="post.cmb2.music_metabox_purchase._met_itunes || post.cmb2.music_metabox_purchase._met_google_play || post.cmb2.music_metabox_purchase._met_amazon">

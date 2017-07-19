@@ -99,7 +99,7 @@
       
       <div class="mprouter" v-bind:class="$route.name === 'music' || $route.name === 'gallery' || $route.name === 'laboratory' || $route.name === 'events' ? 'mprouter--sub' : 'mprouter--main'">
 
-        <div class="mpscroll">
+        <div class="mpscroll" v-if="$route.name !== 'page'">
          
           <a class="mpscroll__inner">
              &#10151;
@@ -114,7 +114,7 @@
       
       <footer>
         
-        <p>&copy; 2016 Metacin. Contact. Terms. Etc...</p>
+        <p>&copy; 2017 Metacin. <router-link :to="'/contact'">Contact</router-link>. </p>
         
       </footer>
       
@@ -135,7 +135,7 @@
      
      <?php get_template_part( 'templates/events' ); ?>
      
-     <?php get_template_part( 'templates/contact' ); ?>
+     <?php get_template_part( 'templates/page' ); ?>
     
      <?php wp_footer(); ?>
    

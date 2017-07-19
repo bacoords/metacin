@@ -6,7 +6,14 @@ footer{
     color:rgba($white, 0.3);
     margin:0;
     font-size:0.9rem;
-    font-weight: 400;
+    font-weight: 700;
     font-family: $font-body;
+    a{
+      color:rgba($white, 0.5);
+      text-decoration: none;
+      &:hover{
+        color:rgba($white, 0.7);
+      }
+    }
   }
 }

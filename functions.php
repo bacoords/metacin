@@ -46,6 +46,7 @@ function met_enqueue_css()
 	wp_enqueue_style('font-awesom', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css', false );
   
 	wp_enqueue_style('open-sans', 'https://fonts.googleapis.com/css?family=Open+Sans', false );
+	wp_enqueue_style('mailchimp', '//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css', false );
 	 
   wp_enqueue_style('theme-core', get_template_directory_uri() . '/dist/css/main.css?v=' . $the_theme->get( 'Version' ), false  );
 

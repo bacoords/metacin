@@ -579,12 +579,16 @@
       }
     },
     mounted : function(){
+      
+      store.commit('loadingOn');
       this.$nextTick(function(){
 
-          // Update title
-          setDocTitle('Laboratory');
+        // Update title
+        setDocTitle('Laboratory');
 
         $('html, body').scrollTop(0);
+        
+        store.commit('loadingOff');
 
       });
     }
@@ -592,7 +596,7 @@
 
 
 
-  var Events = Vue.extend({
+  var Events = Vue.component('events',{
     template : '#eventsTemplate',
     store: store,
     mixins : [mixin],
@@ -602,12 +606,19 @@
       }
     },
     mounted : function(){
+      
+      store.commit('loadingOn');
+      
+      var self = this;
+      
       this.$nextTick(function(){
 
        // Update title
         setDocTitle('Events');
 
         $('html, body').scrollTop(0);
+        
+        store.commit('loadingOff');
 
       });
     }
@@ -615,8 +626,8 @@
 
 
 
-  var Contact = Vue.component('contact', {
-    template : '#contactTemplate',
+  var Page = Vue.component('page', {
+    template : '#pageTemplate',
     store: store,
     mixins : [mixin],
     data: function(){
@@ -630,14 +641,14 @@
       
       var self = this;
       
-      self.$http.get(wp.root + 'wp/v2/pages?slug=contact').then(function(response) { 
+      self.$http.get(wp.root + 'wp/v2/pages?slug=' + self.$route.params.slug).then(function(response) { 
 
         self.post = response.data[0];
 
         self.$nextTick(function(){
 
                 // Update title
-          setDocTitle('Contact');
+          setDocTitle(response.data[0].title.rendered);
 
           $('html, body').scrollTop(0);
           
@@ -900,9 +911,9 @@
         component: Events
       },
       {
-        path : '/contact',
-        name : 'contact', 
-        component: Contact
+        path : '/:slug',
+        name : 'page', 
+        component: Page
       },
       {
         path : '*',
