@@ -203,7 +203,7 @@
 
 
         // Pre Load Images
-        var a = ['http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/gallery-8.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/yeaman.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/pexels-2.jpg','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/neurons.jpg','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/pexels-1.jpg']; 
+        var a = ['https://metacin.briancoords.com/wp-content/themes/metacin-wp-theme/dist/img/gallery-8.png','https://metacin.briancoords.com/wp-content/themes/metacin-wp-theme/dist/img/yeaman.png','https://metacin.briancoords.com/wp-content/themes/metacin-wp-theme/dist/img/pexels-2.jpg','https://metacin.briancoords.com/wp-content/themes/metacin-wp-theme/dist/img/neurons.jpg','https://metacin.briancoords.com/wp-content/themes/metacin-wp-theme/dist/img/pexels-1.jpg']; 
         var self = this;
         this.preload(a, function(){
 
@@ -446,7 +446,7 @@
           setDocTitle('Music Hall');
 
           // Create array of images to load
-          var a = ['http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-amazon.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/google-play.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-itunes.png']; 
+          var a = ['https://metacin.briancoords.com/wp-content/themes/metacin-wp-theme/dist/img/icon-amazon.png','https://metacin.briancoords.com/wp-content/themes/metacin-wp-theme/dist/img/google-play.png','https://metacin.briancoords.com/wp-content/themes/metacin-wp-theme/dist/img/icon-itunes.png']; 
           self.posts.forEach(function(post){
             a.push(post.better_featured_image.source_url);
           });
@@ -528,7 +528,7 @@
         self.$nextTick(function(){
 
           // Create array of images to load
-          var a = ['http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-amazon.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/google-play.png','http://metacin.dev/wp-content/themes/metacin-wp-theme/dist/img/icon-itunes.png']; 
+          var a = ['https://metacin.briancoords.com/wp-content/themes/metacin-wp-theme/dist/img/icon-amazon.png','https://metacin.briancoords.com/wp-content/themes/metacin-wp-theme/dist/img/google-play.png','https://metacin.briancoords.com/wp-content/themes/metacin-wp-theme/dist/img/icon-itunes.png']; 
           self.posts.forEach(function(post){
             a.push(post.better_featured_image.source_url);
           });
